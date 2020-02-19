@@ -79,9 +79,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
+        android:text="@string/logar_pt"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    android:text="@string/logar_pt"
     app:layout_constraintTop_toBottomOf="@id/checkboxlogin"></Button>
 
     <TextView
