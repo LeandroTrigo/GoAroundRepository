@@ -6,15 +6,15 @@
     <item android:title="@string/operations_pt">
     <menu>
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_report"
             android:icon="@drawable/report"
             android:title="@string/report_pt" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_reports"
             android:icon="@drawable/place"
             android:title="@string/see_report_pt"/>
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_notes"
             android:icon="@drawable/anotations"
             android:title="@string/anotation_pt" />
     </menu>
@@ -24,11 +24,11 @@
     <item android:title="@string/informations_pt">
         <menu>
             <item
-                android:id="@+id/nav_tools"
+                android:id="@+id/nav_sup"
                 android:icon="@drawable/ic_menu_manage"
                 android:title="@string/suporte_pt" />
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_credits"
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/credits_pt" />
         </menu>
@@ -42,7 +42,7 @@
                 android:icon="@drawable/settings"
                 android:title="@string/settings_pt" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_logout"
                 android:icon="@drawable/logout"
                 android:title="@string/logout_pt" />
         </menu>
