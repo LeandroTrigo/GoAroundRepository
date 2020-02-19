@@ -18,8 +18,8 @@
     <string name="conta_pt">Entrar Com Conta</string>
     <string name="sem_conta_pt">Entrar Como Anonimo</string>
     <string name="login_pt">Login</string>
-    <string name="login_email_pt">Introduza o seu email</string>
-    <string name="login_pass_pt">Introduza a sua password</string>
+    <string name="login_email_pt">Email</string>
+    <string name="login_pass_pt">Password</string>
     <string name="remember_pt">Lembre-me</string>
     <string name="logar_pt">Entrar</string>
     <string name="reset_pass_pt"><u>Esqueceu-se da password?</u></string>
