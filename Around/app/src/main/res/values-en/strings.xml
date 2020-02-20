@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Around</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <string name="application_name_pt">Go Around</string>
+    <string name="conta_pt">Enter with Account</string>
+    <string name="sem_conta_pt">Enter has Anonymous</string>
+    <string name="login_pt">Login</string>
+    <string name="login_email_pt">Email</string>
+    <string name="login_pass_pt">Password</string>
+    <string name="remember_pt">Remember Me</string>
+    <string name="logar_pt">Access</string>
+    <string name="reset_pass_pt"><u>Forgot your Password?</u></string>
+    <string name="nova_conta_pt"><u>Don't have an Account Yet?</u></string>
+    <string name="report_pt">Report a Problem</string>
+    <string name="see_report_pt">See Reported Problems</string>
+    <string name="anotation_pt">Make a Note</string>
+    <string name="suporte_pt">Suport</string>
+    <string name="credits_pt">Credits</string>
+    <string name="settings_pt">Definitions</string>
+    <string name="logout_pt">Logout</string>
+    <string name="operations_pt">Operations</string>
+    <string name="informations_pt">Information</string>
+    <string name="account_pt">Account</string>
+    <string name="description_pt">An app developed to guide you throughout your days where it takes to paths and obstacles found in the same.</string>
+</resources>
