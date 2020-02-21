@@ -70,7 +70,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //Metodo para apagar nota
     public void deleteNota(String des){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "DELETE FROM " + TABLE_NAME + " WHERE " + COL_1 + " = '" + des;
+        String query = "DELETE FROM " + TABLE_NAME + " WHERE " + COL_2 + " = '" + des + "'";
+        System.out.println(query);
+        db.execSQL(query);
+    }
+
+    public void updateNota(String olddes,String newdesc){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + TABLE_NAME + " SET " + COL_2 + " = '" + newdesc + "'" + " WHERE " + COL_2 + "= '" + olddes + "'";
         System.out.println(query);
         db.execSQL(query);
     }

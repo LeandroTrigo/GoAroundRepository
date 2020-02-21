@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="16dp"
-        android:backgroundTint="@color/cardview_dark_background">
+        android:backgroundTint="#FFFEE2 ">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
-                android:textColor="#fff"
+                android:textColor="#000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/icon_note"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +52,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="4dp"
-                android:textColor="#fff"
+                android:textColor="#000"
                 app:layout_constraintStart_toEndOf="@id/icon_note"
                 app:layout_constraintTop_toBottomOf="@id/desc_nota" />
 

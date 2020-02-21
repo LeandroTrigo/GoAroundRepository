@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="250dp"
+    android:padding="10dp"
+    android:layout_gravity="center"
+    android:background="#eee">
+
+
+    <TextView
+        android:id="@+id/novo_exercicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notas_menu"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
+
+
+    <EditText
+        android:id="@+id/descricao_nota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_below="@id/novo_exercicio"
+        android:background="@null"/>
+
+
+
+
+    <Button
+        android:layout_below="@id/descricao_nota"
+        android:id="@+id/button_delete_nota"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="10dp"
+        android:backgroundTint="#164094"
+        android:textColor="#FFF"
+        android:text="@string/delete"
+        android:layout_alignParentLeft="true"/>
+    <Button
+        android:id="@+id/button_edit_nota"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descricao_nota"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="#164094"
+        android:text="@string/confirm"
+        android:layout_alignParentRight="true"
+        android:textColor="#FFF"/>
+
+
+</RelativeLayout>

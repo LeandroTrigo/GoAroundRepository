@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Notas extends Fragment {
+import javax.security.auth.Destroyable;
+
+public class Notas extends Fragment implements Adapter.OnNoteListener {
 
 
     RecyclerView recyclerView;
@@ -54,8 +56,10 @@ public class Notas extends Fragment {
         }
 
 
+
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new Adapter(getContext(), notas);
+        adapter = new Adapter(getContext(), notas,this);
         recyclerView.setAdapter(adapter);
 
         addNota.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +71,25 @@ public class Notas extends Fragment {
                 ft.addToBackStack(null);
             }
         });
+    }
+
+    @Override
+    public void onNoteClick(int position) {
+        notas.get(position);
+        showDialog(notas.get(position).getTitulo());
+        Log.d("Position", "Nota: " +position);
+        Log.d("Nome", "Nota: " +notas.get(position).getTitulo());
+    }
+
+
+    public void showDialog(String descricao){
+        CustomDialog dialog = new CustomDialog();
+
+        Bundle args = new Bundle();
+        args.putString("desc", descricao);
+        dialog.setArguments(args);
+        dialog.show(getFragmentManager(),"CustomDialog");
+
     }
 
 }

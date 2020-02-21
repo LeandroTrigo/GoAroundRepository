@@ -37,7 +37,7 @@ public class AddNota extends Fragment {
 
         titulo = view.findViewById(R.id.titulo_nota);
         calendario = Calendar.getInstance();
-        data = calendario.get(Calendar.YEAR)+ "/" + (calendario.get(Calendar.MONTH)+1) + "/" + calendario.get(Calendar.DAY_OF_MONTH);
+        data =   calendario.get(Calendar.DAY_OF_MONTH) + "/" + (calendario.get(Calendar.MONTH)+1) +  "/" + calendario.get(Calendar.YEAR);
         addNota = view.findViewById(R.id.add_nota_bd);
         db = new DatabaseHelper(getActivity());
 

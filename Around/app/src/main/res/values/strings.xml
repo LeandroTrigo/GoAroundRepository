@@ -39,4 +39,7 @@
     <string name="desceicao_nota">Insira uma Descrição</string>
     <string name="add">Adicionar</string>
     <string name="notas">Notas</string>
+    <string name="notas_menu">Manipulação de Notas</string>
+    <string name="delete">Apagar</string>
+    <string name="confirm">Confirmar</string>
 </resources>
