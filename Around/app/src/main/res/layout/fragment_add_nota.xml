@@ -2,34 +2,34 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_notas"
+
+    <EditText
+        android:id="@+id/titulo_nota"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        app:layout_constraintBottom_toTopOf="@id/add_nota"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.125" />
+        android:layout_margin="16dp"
+        android:hint="TITULO"
+        app:layout_constraintTop_toTopOf="parent"/>
+
 
     <Button
-        android:id="@+id/add_nota"
+        android:id="@+id/add_nota_bd"
         style="@style/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Adicionar Nota"
+        android:text="Adicionar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
     </Button>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

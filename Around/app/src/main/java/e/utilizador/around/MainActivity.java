@@ -67,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if(id == R.id.nav_reports){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReportsFragment()).addToBackStack(null).commit();
         }
+        else if(id == R.id.nav_notes){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Notas()).addToBackStack(null).commit();
+        }
         else if(id == R.id.nav_logout) {
             finish();
         }

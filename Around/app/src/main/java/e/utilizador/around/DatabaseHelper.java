@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.sql.Date;
 
@@ -54,7 +55,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //Inserirmos esses valores na base de dados.
         long res = db.insert("notas",null,contentValues);
         db.close();
+        Log.d("INSERIDO", "INSERIDO COM ID: " +res);
         return  res;
+
     }
 
     //Metodo para listar notas
