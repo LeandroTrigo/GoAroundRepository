@@ -35,4 +35,8 @@
     <string name="informations_pt">Informações</string>
     <string name="account_pt">Conta</string>
     <string name="description_pt">Uma app desenvolvida para o guiar no seu dia à dia no que toca ao seus percursos e eventuias obstáculos encontrados a usufruir dos mesmos.</string>
+    <string name="add_nota">Adicionar Nota</string>
+    <string name="desceicao_nota">Insira uma Descrição</string>
+    <string name="add">Adicionar</string>
+    <string name="notas">Notas</string>
 </resources>

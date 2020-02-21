@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +26,7 @@ public class AddNota extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        getActivity().setTitle("Adicionar Nota");
+        getActivity().setTitle(R.string.add_nota);
         return inflater.inflate(R.layout.fragment_add_nota, container, false);
 
     }
@@ -43,9 +44,13 @@ public class AddNota extends Fragment {
         addNota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.addNota(titulo.getText().toString(),data);
-                getFragmentManager().popBackStackImmediate();
-
+                if(titulo.getText().length() <= 150) {
+                    db.addNota(titulo.getText().toString(), data);
+                    getFragmentManager().popBackStackImmediate();
+                }
+                else{
+                    Toast.makeText(getContext(), "Tamanho Excedido", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

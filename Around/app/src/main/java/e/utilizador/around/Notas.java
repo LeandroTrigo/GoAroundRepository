@@ -27,7 +27,7 @@ public class Notas extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        getActivity().setTitle("Notas");
+        getActivity().setTitle(R.string.notas);
         return inflater.inflate(R.layout.fragment_notas, container, false);
 
     }

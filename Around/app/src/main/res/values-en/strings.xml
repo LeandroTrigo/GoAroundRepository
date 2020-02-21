@@ -35,4 +35,8 @@
     <string name="informations_pt">Information</string>
     <string name="account_pt">Account</string>
     <string name="description_pt">An app developed to guide you throughout your days where it takes to paths and obstacles found in the same.</string>
+    <string name="add_nota">Add Note</string>
+    <string name="desceicao_nota">Insert Description</string>
+    <string name="add">Add</string>
+    <string name="notas">Notes</string>
 </resources>
