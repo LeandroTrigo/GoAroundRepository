@@ -12,8 +12,8 @@ public class ReportFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        getActivity().setTitle("Report");
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        getActivity().setTitle(R.string.report);
+        return inflater.inflate(R.layout.fragment_report, container, false);
 
     }
 

@@ -38,6 +38,7 @@ public class Notas extends Fragment implements Adapter.OnNoteListener {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         addNota = view.findViewById(R.id.add_nota);
         recyclerView = view.findViewById(R.id.recycler_notas);
 
@@ -60,6 +61,7 @@ public class Notas extends Fragment implements Adapter.OnNoteListener {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new Adapter(getContext(), notas,this);
+        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
 
         addNota.setOnClickListener(new View.OnClickListener() {
