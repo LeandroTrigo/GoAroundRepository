@@ -42,4 +42,5 @@
     <string name="notas_menu">Manipulação de Notas</string>
     <string name="delete">Apagar</string>
     <string name="confirm">Confirmar</string>
+    <string name="anonimo">Anónimo</string>
 </resources>

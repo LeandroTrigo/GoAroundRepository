@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,6 +32,9 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Login.this, MainActivity.class);
+                Bundle b = new Bundle();
+                b.putBoolean("anomnimo", true);
+                intent.putExtras(b);
                 startActivity(intent);
             }
         });

@@ -42,4 +42,5 @@
     <string name="notas_menu">Note Manipulation</string>
     <string name="delete">Delete</string>
     <string name="confirm">Confirm</string>
+    <string name="anonimo">Anonymous</string>
 </resources>

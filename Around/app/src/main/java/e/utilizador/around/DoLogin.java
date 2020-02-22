@@ -27,6 +27,9 @@ public class DoLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DoLogin.this, MainActivity.class);
+                Bundle b = new Bundle();
+                b.putBoolean("anomnimo", false);
+                intent.putExtras(b);
                 startActivity(intent);
             }
         });
