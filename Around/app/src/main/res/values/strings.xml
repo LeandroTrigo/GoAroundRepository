@@ -44,4 +44,9 @@
     <string name="confirm">Confirmar</string>
     <string name="anonimo">Anónimo</string>
     <string name="report">Reportar</string>
+    <string name="erro">Erro</string>
+    <string name="tamanho">Tamanho Excedido</string>
+    <string name="sucesso">Sucesso</string>
+    <string name="nota_apagada">Nota Apagado Com Sucesso!</string>
+    <string name="nota_atualizada">Nota Atualizada Com Sucesso!</string>
 </resources>

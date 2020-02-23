@@ -1,5 +1,7 @@
 package e.utilizador.around;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,21 +39,35 @@ public class AddNota extends Fragment {
 
         titulo = view.findViewById(R.id.titulo_nota);
         calendario = Calendar.getInstance();
-        data =   calendario.get(Calendar.DAY_OF_MONTH) + "/" + (calendario.get(Calendar.MONTH)+1) +  "/" + calendario.get(Calendar.YEAR);
+        data = calendario.get(Calendar.DAY_OF_MONTH) + "/" + (calendario.get(Calendar.MONTH) + 1) + "/" + calendario.get(Calendar.YEAR);
         addNota = view.findViewById(R.id.add_nota_bd);
         db = new DatabaseHelper(getActivity());
 
         addNota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(titulo.getText().length() <= 150) {
+                if (titulo.getText().length() <= 150) {
                     db.addNota(titulo.getText().toString(), data);
                     getFragmentManager().popBackStackImmediate();
-                }
-                else{
-                    Toast.makeText(getContext(), "Tamanho Excedido", Toast.LENGTH_LONG).show();
+                } else {
+                    notificarErro(getString(R.string.erro),getString(R.string.tamanho));
                 }
             }
         });
+    }
+
+
+    public void notificarErro(String titulo, String mensagem) {
+        new AlertDialog.Builder(getContext())
+                .setTitle(titulo)
+                .setMessage(mensagem)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .setIcon(R.drawable.error)
+                .show();
     }
 }

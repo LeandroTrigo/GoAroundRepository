@@ -44,4 +44,9 @@
     <string name="confirm">Confirm</string>
     <string name="anonimo">Anonymous</string>
     <string name="report">Report</string>
+    <string name="erro">Error</string>
+    <string name="tamanho">Max Length Exceeded</string>
+    <string name="sucesso">Success</string>
+    <string name="nota_apagada">Note Successfully Deleted!</string>
+    <string name="nota_atualizada">Note Successfully Updated!</string>
 </resources>

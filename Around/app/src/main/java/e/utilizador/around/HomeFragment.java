@@ -13,6 +13,9 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getActivity().setTitle("Página Inicial");
+        if(CheckFragment.getInstance().fragmento != null) {
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, CheckFragment.getInstance().fragmento).commit();
+        }
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 

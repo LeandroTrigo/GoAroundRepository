@@ -55,7 +55,7 @@ public class CustomDialog  extends DialogFragment {
              public void onClick(View v) {
                  db.deleteNota(descricao);
                  getDialog().dismiss();
-                 Toast.makeText(getContext(), "Nota Apagado Com Sucesso!", Toast.LENGTH_LONG).show();
+                 notificarSucesso(getString(R.string.sucesso),getString(R.string.nota_apagada));
              }
          });
 
@@ -64,13 +64,27 @@ public class CustomDialog  extends DialogFragment {
              public void onClick(View v) {
                  db.updateNota(descricao,desc.getText().toString());
                  getDialog().dismiss();
-                 Toast.makeText(getContext(), "Nota Atualizada Com Sucesso!", Toast.LENGTH_LONG).show();
+                 notificarSucesso(getString(R.string.sucesso),getString(R.string.nota_atualizada));
              }
          });
 
 
 
         return view;
+    }
+
+    public void notificarSucesso(String titulo, String mensagem) {
+        new AlertDialog.Builder(getContext())
+                .setTitle(titulo)
+                .setMessage(mensagem)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .setIcon(R.drawable.sucess)
+                .show();
     }
 
 }
