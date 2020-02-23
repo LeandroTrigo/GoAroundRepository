@@ -15,19 +15,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="40dp"
-        android:text="Go Around"/>
+        <TextView
+            android:id="@+id/text_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="80dp"
+            android:layout_marginTop="150dp"
+            android:text="Go Around"/>
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/icon_home"
-        android:layout_width="280dp"
-        android:layout_height="220dp"
-        android:src="@drawable/walk"/>
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/icon_home"
+            android:layout_margin="50dp"
+            android:layout_width="500dp"
+            android:layout_height="220dp"
+            android:src="@drawable/walk"/>
 
     </LinearLayout>
 
@@ -35,16 +37,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="70dp"
-        android:paddingLeft="16dp"
         android:paddingTop="16dp"
         app:layout_constraintStart_toEndOf="@id/linear">
 
         <TextView
-            android:layout_width="300dp"
+            android:layout_width="600dp"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_marginTop="168dp"
-            android:layout_marginLeft="30dp"
+            android:textSize="40dp"
+            android:layout_marginTop="200dp"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/description_pt"
             app:layout_constraintEnd_toEndOf="parent"

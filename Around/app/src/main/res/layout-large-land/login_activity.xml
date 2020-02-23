@@ -8,7 +8,10 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/land"
         android:layout_width="0dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,8 +20,8 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="250dp"
-            android:layout_height="200dp"
+            android:layout_width="500dp"
+            android:layout_height="500dp"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,42 +31,56 @@
             android:id="@+id/appname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="112dp"
+            android:layout_marginTop="40dp"
             android:text="@string/application_name_pt"
             android:textColor="#164094"
-            android:textSize="30dp"
+            android:textSize="60dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logo"></TextView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintStart_toEndOf="@id/land"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="90dp"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/login"
-            style="@style/button"
-            android:layout_width="wrap_content"
+            android:layout_marginTop="200dp"
+            android:layout_width="520dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="350dp"
-            android:layout_marginTop="70dp"
-            android:text="@string/conta_pt"></Button>
+            android:textColor="#FFF"
+            android:background="#164094"
+            android:radius="100dp"
+            android:textSize="40dp"
+            android:padding="16dp"
+            android:text="@string/conta_pt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></Button>
+
 
         <Button
             android:id="@+id/anonymous"
-            style="@style/button"
-            android:layout_width="wrap_content"
+            android:layout_width="520dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="350dp"
             android:layout_marginTop="56dp"
-            android:text="@string/sem_conta_pt"></Button>
+            android:background="#164094"
+            android:radius="100dp"
+            android:textSize="40dp"
+            android:textColor="#FFF"
+            android:padding="16dp"
+            android:text="@string/sem_conta_pt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login"></Button>
 
-    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
