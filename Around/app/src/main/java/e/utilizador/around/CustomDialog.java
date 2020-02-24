@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,6 +56,10 @@ public class CustomDialog  extends DialogFragment {
              public void onClick(View v) {
                  db.deleteNota(descricao);
                  getDialog().dismiss();
+                 final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                 ft.replace(R.id.fragment_container, new Notas(), "Adicionar Nota");
+                 ft.commit();
+                 ft.addToBackStack(null);
                  notificarSucesso(getString(R.string.sucesso),getString(R.string.nota_apagada));
              }
          });
@@ -64,6 +69,10 @@ public class CustomDialog  extends DialogFragment {
              public void onClick(View v) {
                  db.updateNota(descricao,desc.getText().toString());
                  getDialog().dismiss();
+                 final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                 ft.replace(R.id.fragment_container, new Notas(), "Adicionar Nota");
+                 ft.commit();
+                 ft.addToBackStack(null);
                  notificarSucesso(getString(R.string.sucesso),getString(R.string.nota_atualizada));
              }
          });
