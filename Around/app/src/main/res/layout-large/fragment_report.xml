@@ -8,14 +8,14 @@
 
     <Button
         android:id="@+id/button_tipo_mapa"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_margin="16dp"
         android:textColor="#FFF"
         android:background="#164094"
         android:text="Mapa"
-        android:padding="5dp"
+        android:padding="16dp"
         android:layout_alignParentTop="true"/>
 
 

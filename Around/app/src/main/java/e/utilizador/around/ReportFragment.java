@@ -1,6 +1,8 @@
 package e.utilizador.around;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -31,6 +33,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,9 +42,7 @@ import java.util.Date;
 public class ReportFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener {
 
     private GoogleMap mMap;
-    private Button tipomapa,foto;
-    ImageView imageView;
-    String path;
+    private Button tipomapa;
 
 
     @Override
@@ -52,10 +54,6 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
                 .findFragmentById(R.id.mapa);
         mapFragment.getMapAsync(this);
-
-        if(Build.VERSION.SDK_INT>=23){
-            requestPermissions(new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE},2);
-        }
 
         return view;
 
@@ -82,16 +80,6 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
             }
         });
 
-
-        imageView = view.findViewById(R.id.imageView);
-        foto = view.findViewById(R.id.button_foto);
-
-        foto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EscolherFoto();
-            }
-        });
 
 
     }
@@ -126,6 +114,8 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
     }
 
 
+
+
     public void showDialog(/*String descricao*/){
         AddMarcador dialog = new AddMarcador();
 
@@ -136,47 +126,7 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
 
     }
 
-    private void EscolherFoto(){
-        Intent takePic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if(takePic.resolveActivity(getActivity().getPackageManager()) != null){
-            File foto = null;
-            foto = createFoto();
 
-            if(foto != null) {
-                path = foto.getAbsolutePath();
-                Uri foturi = FileProvider.getUriForFile(getContext(),"com.thecodecity.cameraandroid.fileprovider",foto);
-                takePic.putExtra(MediaStore.EXTRA_OUTPUT,foturi);
-                startActivityForResult(takePic,1);
-            }
-
-
-        }
-    }
-
-    private File createFoto(){
-        String nome = new SimpleDateFormat("yyyyMMdd HHmmss").format(new Date());
-        File storage =  Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        File imagem = null;
-        try {
-            imagem = File.createTempFile(nome, ".jpg", storage);
-        }
-        catch (Exception e){
-            Log.d("Exception", "createFoto: " + e);
-        }
-
-        return imagem;
-
-    }
-
-    @Override
-    public void onActivityResult(int requestCode,int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-
-        if(requestCode == 1){
-            Bitmap bitmap = BitmapFactory.decodeFile(path);
-            imageView.setImageBitmap(bitmap);
-        }
-    }
 
 
 }
