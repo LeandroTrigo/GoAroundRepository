@@ -15,7 +15,6 @@ public class MySingleton {
     private static Context mCtx;
 
     public static String server = "http://localhost:5000/";
-    //public static String server = "http://192.168.43.213/webapiviananatacao";
 
     private MySingleton(Context context) {
         mCtx = context;

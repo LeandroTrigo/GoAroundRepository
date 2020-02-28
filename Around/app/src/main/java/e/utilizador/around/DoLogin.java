@@ -72,7 +72,7 @@ public class DoLogin extends AppCompatActivity {
     }
 
     public void login(final View view) {
-        String url = "http://192.168.1.66/utilizador/login";
+        String url = "http://192.168.1.66:5000/utilizador/login";
 
         Log.d("ENTROU1", "login: ");
 
@@ -80,7 +80,10 @@ public class DoLogin extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("ENTROU2", "login: ");
+
+                        Log.d("ENTROU2", "login: " +response);
+                        /*
+
                         String emaillogin = email.getText().toString();
                         String passlogin = pass.getText().toString();
 
@@ -118,26 +121,25 @@ public class DoLogin extends AppCompatActivity {
                         } catch (Exception e) {
                             notificarErro(getString(R.string.erro),getString(R.string.webservice));
                         }
-                    }
+                    */}
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         NetworkResponse response = error.networkResponse;
+                        Log.d("ERRO DE VOLLEY", "onErrorResponse: " +error);
                         if (error instanceof ServerError && response != null) {
                             try {
                                 String res = new String(response.data,
                                         HttpHeaderParser.parseCharset(response.headers, "utf-8"));
                                 // Now you can use any deserializer to make sense of data
                                 JSONObject obj = new JSONObject(res);
-                                Log.d("ERRO", "onErrorResponse: " +obj);
                             } catch (UnsupportedEncodingException e1) {
-                                Log.d("ERRO", "onErrorResponse: " +e1);
                                 e1.printStackTrace();
+                                Log.d("ERRO1", "onErrorResponse: " +e1.getMessage());
                             } catch (JSONException e2) {
-                                // returned data is not JSONObject?
-                                Log.d("ERRO", "onErrorResponse: " +e2);
                                 e2.printStackTrace();
+                                Log.d("ERRO2", "onErrorResponse: " +e2.getMessage());
                             }
                         }
                     }
@@ -147,12 +149,12 @@ public class DoLogin extends AppCompatActivity {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> jsonParams = new HashMap<String, String>();
-                String userlogado = email.getText().toString().trim();
+                String emaillogado = email.getText().toString().trim();
                 String passlogada = pass.getText().toString();
 
 
-                jsonParams.put("password", passlogada);
-                jsonParams.put("username", userlogado);
+                jsonParams.put("Email", emaillogado);
+                jsonParams.put("Password", passlogada);
 
 
 
