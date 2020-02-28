@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            anonimo = extras.getBoolean("anomnimo");
+            anonimo = extras.getBoolean("anonimo");
         }
 
         Log.d("ANONIMO", "onCreate: " +anonimo);

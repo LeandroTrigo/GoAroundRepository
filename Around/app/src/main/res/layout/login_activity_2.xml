@@ -47,6 +47,7 @@
         app:layout_constraintTop_toBottomOf="@id/textlogin">
 
         <EditText
+            android:id="@+id/email_login"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="@string/login_email_pt"
@@ -83,9 +84,11 @@
 
 
         <EditText
+            android:id="@+id/pass_login"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="@string/login_pass_pt"
+            android:inputType="textPassword"
             android:textColor="#164094"
             android:background="@null"
             android:textStyle="bold"
@@ -125,6 +128,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
         android:text="@string/logar_pt"
+        android:onClick="login"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/checkboxlogin"></Button>

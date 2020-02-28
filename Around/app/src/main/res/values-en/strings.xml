@@ -49,4 +49,10 @@
     <string name="sucesso">Success</string>
     <string name="nota_apagada">Note Successfully Deleted!</string>
     <string name="nota_atualizada">Note Successfully Updated!</string>
+    <string name="carregar_foto">Load Picture</string>
+    <string name="titulo">Title</string>
+    <string name="descricao">Description</string>
+    <string name="novo_marcador">New Marker</string>
+    <string name="credenciais">Credentials Incorrect</string>
+    <string name="webservice">Webservices Error</string>
 </resources>
