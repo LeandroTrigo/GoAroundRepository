@@ -53,6 +53,6 @@
     <string name="titulo">Title</string>
     <string name="descricao">Description</string>
     <string name="novo_marcador">New Marker</string>
-    <string name="credenciais">Credentials Incorrect</string>
+    <string name="credenciais">Incorrect Credentials!</string>
     <string name="webservice">Webservices Error</string>
 </resources>

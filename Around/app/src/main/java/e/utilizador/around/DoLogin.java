@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -22,6 +23,8 @@ import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
+import com.auth0.android.jwt.Claim;
+import com.auth0.android.jwt.JWT;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -74,25 +77,20 @@ public class DoLogin extends AppCompatActivity {
     public void login(final View view) {
         String url = "http://192.168.1.66:5000/utilizador/login";
 
-        Log.d("ENTROU1", "login: ");
-
         StringRequest postResquest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
-                        Log.d("ENTROU2", "login: " +response);
-                        /*
 
                         String emaillogin = email.getText().toString();
                         String passlogin = pass.getText().toString();
 
+                        Log.d("RESPONSE", "RESPOSE" +response);
+
                         try {
                             Log.d("RESPONSE", "RESPOSE" +response);
 
-                            if (response != null){
-
-                                Log.d("ENTROU4", "login: ");
 
 
 
@@ -109,25 +107,24 @@ public class DoLogin extends AppCompatActivity {
                                     editor.commit();
                                 }
 
+
                                 Intent intent = new Intent(DoLogin.this, MainActivity.class);
                                 Bundle b = new Bundle();
                                 b.putBoolean("anomnimo", false);
                                 intent.putExtras(b);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
-                            } else {
-                                notificarErro(getString(R.string.erro),getString(R.string.credenciais));
-                            }
+
                         } catch (Exception e) {
                             notificarErro(getString(R.string.erro),getString(R.string.webservice));
                         }
-                    */}
+                    }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         NetworkResponse response = error.networkResponse;
-                        Log.d("ERRO DE VOLLEY", "onErrorResponse: " +error);
+                        notificarErro(getString(R.string.erro),getString(R.string.credenciais));
                         if (error instanceof ServerError && response != null) {
                             try {
                                 String res = new String(response.data,
@@ -151,8 +148,6 @@ public class DoLogin extends AppCompatActivity {
                 Map<String, String> jsonParams = new HashMap<String, String>();
                 String emaillogado = email.getText().toString().trim();
                 String passlogada = pass.getText().toString();
-
-
                 jsonParams.put("Email", emaillogado);
                 jsonParams.put("Password", passlogada);
 
@@ -164,6 +159,10 @@ public class DoLogin extends AppCompatActivity {
 
         saveLogin = sharedPreferences.getBoolean("saveLogin", true);
         MySingleton.getInstance(this).addToRequestQueue(postResquest);
+        postResquest.setRetryPolicy(new DefaultRetryPolicy(
+                300,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
 
