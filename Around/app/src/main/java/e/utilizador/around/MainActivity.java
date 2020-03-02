@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Boolean anonimo;
     ImageView edit,fotoperfil;
     TextView nomeperfil;
+    String nomeuser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             anonimo = extras.getBoolean("anonimo");
+            nomeuser = extras.getString("nome");
         }
 
         Log.d("ANONIMO", "onCreate: " +anonimo);
@@ -70,6 +72,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             edit.setVisibility(View.INVISIBLE);
             nomeperfil.setText(getString(R.string.anonimo));
             fotoperfil.setImageResource(R.drawable.anonymous);
+        }
+        else{
+            nomeperfil.setText(nomeuser);
         }
 
 

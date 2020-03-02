@@ -75,7 +75,7 @@ public class DoLogin extends AppCompatActivity {
     }
 
     public void login(final View view) {
-        String url = "http://192.168.1.66:5000/utilizador/login";
+        String url = MySingleton.server + "utilizador/login";
 
         StringRequest postResquest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -91,6 +91,9 @@ public class DoLogin extends AppCompatActivity {
                         try {
                             Log.d("RESPONSE", "RESPOSE" +response);
 
+                            JWT jwt = new JWT(response);
+                            Claim subscriptionMetaData =jwt.getClaim("Nome");
+                            String parsedValue = subscriptionMetaData.asString();
 
 
 
@@ -111,6 +114,7 @@ public class DoLogin extends AppCompatActivity {
                                 Intent intent = new Intent(DoLogin.this, MainActivity.class);
                                 Bundle b = new Bundle();
                                 b.putBoolean("anomnimo", false);
+                                b.putString("nome",parsedValue);
                                 intent.putExtras(b);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
