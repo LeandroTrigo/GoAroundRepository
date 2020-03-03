@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_gravity="center"
+    android:background="#eee">
+
+
+    <TextView
+        android:id="@+id/novo_marcador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Novo Marcador"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
+
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_below="@id/novo_marcador"
+        android:layout_centerHorizontal="true"
+        android:background="#fff"
+        android:layout_margin="16dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        />
+
+    <Button
+        android:id="@+id/button_foto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carregar foto"
+        android:layout_margin="16dp"
+        android:layout_below="@id/imageView"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="false"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_titulo"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_foto"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@android:color/transparent"
+        app:cardCornerRadius="5dp">
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Titulo"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:background="@null"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_descricao"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_titulo"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@android:color/transparent"
+        app:cardCornerRadius="5dp">
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Descricao"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:background="@null"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <Button
+        android:id="@+id/button_edit_nota"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#164094"
+        android:layout_margin="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/confirm"
+        android:layout_below="@id/card_descricao"
+        android:textColor="#FFF"/>
+
+
+</RelativeLayout>

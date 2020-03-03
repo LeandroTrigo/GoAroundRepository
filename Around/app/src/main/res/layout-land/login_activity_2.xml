@@ -3,11 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/contraint1"
+    android:layout_width="300dp"
     android:layout_height="match_parent"
-    android:layout_margin="20dp">
-
-
-
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_marginTop="30dp">
 
     <ImageView
         android:id="@+id/login_icon"
@@ -32,22 +38,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_icon"></TextView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/contraint1">
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/email"
-        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/transparent"
         app:cardCornerRadius="5dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textlogin">
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/email_login"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="@string/login_email_pt"
@@ -60,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="16dp"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="right|center_vertical"
             android:background="@drawable/email"
             android:padding="10dp">
@@ -84,7 +96,6 @@
 
 
         <EditText
-            android:id="@+id/pass_login"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="@string/login_pass_pt"
@@ -122,16 +133,16 @@
     </CheckBox>
 
     <Button
-    android:id="@+id/button_login"
-    style="@style/button"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
+        android:id="@+id/button_login"
+        style="@style/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/logar_pt"
         android:onClick="login"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/checkboxlogin"></Button>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkboxlogin"></Button>
 
     <TextView
         android:id="@+id/esqueceu"
@@ -157,6 +168,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/esqueceu"></TextView>
 
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
