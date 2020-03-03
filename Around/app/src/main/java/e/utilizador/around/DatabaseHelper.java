@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.sql.Date;
 
@@ -54,7 +55,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //Inserirmos esses valores na base de dados.
         long res = db.insert("notas",null,contentValues);
         db.close();
+        Log.d("INSERIDO", "INSERIDO COM ID: " +res);
         return  res;
+
     }
 
     //Metodo para listar notas
@@ -67,7 +70,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //Metodo para apagar nota
     public void deleteNota(String des){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "DELETE FROM " + TABLE_NAME + " WHERE " + COL_1 + " = '" + des;
+        String query = "DELETE FROM " + TABLE_NAME + " WHERE " + COL_2 + " = '" + des + "'";
+        System.out.println(query);
+        db.execSQL(query);
+    }
+
+    public void updateNota(String olddes,String newdesc){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + TABLE_NAME + " SET " + COL_2 + " = '" + newdesc + "'" + " WHERE " + COL_2 + "= '" + olddes + "'";
         System.out.println(query);
         db.execSQL(query);
     }

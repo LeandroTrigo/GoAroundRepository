@@ -9,8 +9,7 @@
         android:id="@+id/registo_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:text="Registo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,14 +26,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/registo_text">
 
-    <EditText
-        android:id="@+id/nome_user"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Nome"
-        android:padding="10dp"
-        android:textColor="#000"
-        android:background="@null"/>
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Nome"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:background="@null"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -62,7 +60,6 @@
         app:layout_constraintTop_toBottomOf="@id/card_nome">
 
         <EditText
-            android:id="@+id/email_user"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Email"
@@ -97,11 +94,9 @@
         app:layout_constraintTop_toBottomOf="@id/card_email">
 
         <EditText
-            android:id="@+id/pass_user"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="#000"
             android:background="@null"/>
@@ -120,41 +115,38 @@
 
 
     <androidx.cardview.widget.CardView
-            android:id="@+id/card_cpass"
-            android:layout_marginTop="16dp"
-            android:layout_width="wrap_content"
+        android:id="@+id/card_cpass"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_pass">
+
+        <EditText
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            app:cardCornerRadius="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_pass">
+            android:hint="Confirmar Password"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:background="@null"/>
 
-            <EditText
-                android:id="@+id/confirm_pass"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:hint="Confirmar Password"
-                android:inputType="textPassword"
-                android:padding="10dp"
-                android:textColor="#000"
-                android:background="@null"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/pass"
+            android:padding="10dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="16dp"
-                android:layout_gravity="right|center_vertical"
-                android:background="@drawable/pass"
-                android:padding="10dp">
-
-            </ImageView>
+        </ImageView>
 
 
-        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/registar_button"
         style="@style/button"
         android:layout_marginTop="16dp"
         android:text="Registar"
@@ -163,7 +155,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_cpass"/>
-
 
 
 

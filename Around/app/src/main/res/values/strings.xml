@@ -35,4 +35,24 @@
     <string name="informations_pt">Informações</string>
     <string name="account_pt">Conta</string>
     <string name="description_pt">Uma app desenvolvida para o guiar no seu dia à dia no que toca ao seus percursos e eventuias obstáculos encontrados a usufruir dos mesmos.</string>
+    <string name="add_nota">Adicionar Nota</string>
+    <string name="desceicao_nota">Insira uma Descrição</string>
+    <string name="add">Adicionar</string>
+    <string name="notas">Notas</string>
+    <string name="notas_menu">Manipulação de Notas</string>
+    <string name="delete">Apagar</string>
+    <string name="confirm">Confirmar</string>
+    <string name="anonimo">Anónimo</string>
+    <string name="report">Reportar</string>
+    <string name="erro">Erro</string>
+    <string name="tamanho">Tamanho Excedido</string>
+    <string name="sucesso">Sucesso</string>
+    <string name="nota_apagada">Nota Apagado Com Sucesso!</string>
+    <string name="nota_atualizada">Nota Atualizada Com Sucesso!</string>
+    <string name="carregar_foto">Carregar foto</string>
+    <string name="titulo">Titulo</string>
+    <string name="descricao">Descrição</string>
+    <string name="novo_marcador">Novo Marcador</string>
+    <string name="credenciais">Credências Incorretas!</string>
+    <string name="webservice">Erro de Webservice</string>
 </resources>

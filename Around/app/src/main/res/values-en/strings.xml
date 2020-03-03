@@ -23,7 +23,7 @@
     <string name="remember_pt">Remember Me</string>
     <string name="logar_pt">Access</string>
     <string name="reset_pass_pt"><u>Forgot your Password?</u></string>
-    <string name="nova_conta_pt"><u>Don't have an Account Yet?</u></string>
+    <string name="nova_conta_pt"><u>Dont have an Account Yet?</u></string>
     <string name="report_pt">Report a Problem</string>
     <string name="see_report_pt">See Reported Problems</string>
     <string name="anotation_pt">Make a Note</string>
@@ -35,4 +35,24 @@
     <string name="informations_pt">Information</string>
     <string name="account_pt">Account</string>
     <string name="description_pt">An app developed to guide you throughout your days where it takes to paths and obstacles found in the same.</string>
+    <string name="add_nota">Add Note</string>
+    <string name="desceicao_nota">Insert Description</string>
+    <string name="add">Add</string>
+    <string name="notas">Notes</string>
+    <string name="notas_menu">Note Manipulation</string>
+    <string name="delete">Delete</string>
+    <string name="confirm">Confirm</string>
+    <string name="anonimo">Anonymous</string>
+    <string name="report">Report</string>
+    <string name="erro">Error</string>
+    <string name="tamanho">Max Length Exceeded</string>
+    <string name="sucesso">Success</string>
+    <string name="nota_apagada">Note Successfully Deleted!</string>
+    <string name="nota_atualizada">Note Successfully Updated!</string>
+    <string name="carregar_foto">Load Picture</string>
+    <string name="titulo">Title</string>
+    <string name="descricao">Description</string>
+    <string name="novo_marcador">New Marker</string>
+    <string name="credenciais">Incorrect Credentials!</string>
+    <string name="webservice">Webservices Error</string>
 </resources>

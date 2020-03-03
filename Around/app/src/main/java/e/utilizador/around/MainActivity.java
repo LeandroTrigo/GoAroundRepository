@@ -24,9 +24,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    Boolean anonimo;
+    ImageView edit,fotoperfil;
+    TextView nomeperfil;
+    String nomeuser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +43,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
 
 
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            anonimo = extras.getBoolean("anonimo");
+            nomeuser = extras.getString("nome");
+        }
+
+        Log.d("ANONIMO", "onCreate: " +anonimo);
+
+        Menu nav_Menu = navigationView.getMenu();
+
+        View headerView = navigationView.getHeaderView(0);
+        edit = headerView.findViewById(R.id.edit_profile);
+        nomeperfil= headerView.findViewById(R.id.nome_perfil);
+        fotoperfil = headerView.findViewById(R.id.imageperfil);
+
+        if(anonimo == true){
+            nav_Menu.findItem(R.id.nav_report).setVisible(false);
+            nav_Menu.findItem(R.id.nav_reports).setVisible(false);
+            edit.setVisibility(View.INVISIBLE);
+            nomeperfil.setText(getString(R.string.anonimo));
+            fotoperfil.setImageResource(R.drawable.anonymous);
+        }
+        else{
+            nomeperfil.setText(nomeuser);
+        }
 
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -66,6 +101,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if(id == R.id.nav_reports){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReportsFragment()).addToBackStack(null).commit();
+        }
+        else if(id == R.id.nav_notes){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Notas()).addToBackStack(null).commit();
         }
         else if(id == R.id.nav_logout) {
             finish();
