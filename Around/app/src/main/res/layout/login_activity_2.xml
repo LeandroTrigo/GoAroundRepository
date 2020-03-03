@@ -33,33 +33,77 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_icon"></TextView>
 
-    <EditText
+
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/email"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/login_email_pt"
-        android:textColor="#164094"
-        android:textAlignment="center"
         android:layout_marginTop="16dp"
-        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textlogin"></EditText>
+        app:layout_constraintTop_toBottomOf="@id/textlogin">
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_email_pt"
+            android:textColor="#164094"
+            android:padding="16dp"
+            android:background="@null"
+            android:textStyle="bold"></EditText>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/email"
+            android:padding="10dp">
+
+        </ImageView>
 
 
+    </androidx.cardview.widget.CardView>
 
-    <EditText
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/pass"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/login_pass_pt"
-        android:textColor="#164094"
-        android:textAlignment="center"
         android:layout_marginTop="16dp"
-        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email"></EditText>
+        app:layout_constraintTop_toBottomOf="@id/email">
+
+
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_pass_pt"
+            android:textColor="#164094"
+            android:background="@null"
+            android:textStyle="bold"
+            android:padding="16dp"></EditText>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/pass"
+            android:padding="10dp">
+
+        </ImageView>
+
+
+    </androidx.cardview.widget.CardView>
+
 
     <CheckBox
         android:id="@+id/checkboxlogin"
@@ -69,6 +113,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pass"
+        android:buttonTint="#164094"
         android:text="@string/remember_pt">
 
     </CheckBox>

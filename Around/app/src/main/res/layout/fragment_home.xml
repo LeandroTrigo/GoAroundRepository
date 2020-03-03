@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Uma app desenvolvida para o guiar no seu dia à dia no que toca ao seus percursos e eventuias obstáculos encontrados a usufruir dos mesmos."
+        android:text="@string/description_pt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/icon_home"/>
 
