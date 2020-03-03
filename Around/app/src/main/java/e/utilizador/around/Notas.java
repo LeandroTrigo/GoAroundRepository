@@ -67,10 +67,9 @@ public class Notas extends Fragment implements Adapter.OnNoteListener {
         addNota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.fragment_container, new AddNota(), "Adicionar Nota");
-                ft.commit();
-                ft.addToBackStack(null);
+                Fragment fragment = new AddNota();
+                CheckFragment.getInstance().fragmento = fragment;
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddNota()).addToBackStack(null).commit();
             }
         });
     }

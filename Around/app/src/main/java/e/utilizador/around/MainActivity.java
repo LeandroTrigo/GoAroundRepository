@@ -11,6 +11,7 @@ import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -80,8 +81,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-
+        if(CheckFragment.getInstance().fragmento != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, CheckFragment.getInstance().fragmento).commit();
+        }
+        else{
+            HomeFragment home = new HomeFragment();
+            CheckFragment.getInstance().fragmento = home;
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, home).commit();
+        }
     }
 
     @Override
@@ -97,12 +104,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.nav_report){
+            Fragment fragment = new ReportFragment();
+            CheckFragment.getInstance().fragmento = fragment;
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReportFragment()).addToBackStack(null).commit();
         }
         else if(id == R.id.nav_reports){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReportsFragment()).addToBackStack(null).commit();
         }
         else if(id == R.id.nav_notes){
+            Fragment fragment = new Notas();
+            CheckFragment.getInstance().fragmento = fragment;
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Notas()).addToBackStack(null).commit();
         }
         else if(id == R.id.nav_logout) {
