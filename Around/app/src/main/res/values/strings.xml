@@ -17,4 +17,21 @@
     <string name="application_name_pt">Go Around</string>
     <string name="conta_pt">Entrar Com Conta</string>
     <string name="sem_conta_pt">Entrar Como Anonimo</string>
+    <string name="login_pt">Login</string>
+    <string name="login_email_pt">Introduza o seu email</string>
+    <string name="login_pass_pt">Introduza a sua password</string>
+    <string name="remember_pt">Lembre-me</string>
+    <string name="logar_pt">Entrar</string>
+    <string name="reset_pass_pt"><u>Esqueceu-se da password?</u></string>
+    <string name="nova_conta_pt"><u>Ainda não tem conta?</u></string>
+    <string name="report_pt">Reportar Problema</string>
+    <string name="see_report_pt">Ver Problemas Reportados</string>
+    <string name="anotation_pt">Fazer uma Anotação</string>
+    <string name="suporte_pt">Suporte</string>
+    <string name="credits_pt">Créditos</string>
+    <string name="settings_pt">Definições</string>
+    <string name="logout_pt">Logout</string>
+    <string name="operations_pt">Operações</string>
+    <string name="informations_pt">Informações</string>
+    <string name="account_pt">Conta</string>
 </resources>

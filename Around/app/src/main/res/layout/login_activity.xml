@@ -49,6 +49,7 @@
 
 
     <Button
+        android:id="@+id/anonymous"
         style="@style/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
