@@ -1,17 +1,6 @@
 package e.utilizador.around;
 
-import android.Manifest;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.nio.BufferUnderflowException;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,6 +33,7 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
 
     private GoogleMap mMap;
     private Button tipomapa;
+    private Integer iduser;
 
 
     @Override
@@ -66,6 +57,11 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle args = getArguments();
+        iduser = args.getInt("id");
+        Log.d("USER", "onCreateView: " + iduser);
+
+
         tipomapa = view.findViewById(R.id.button_tipo_mapa);
 
         tipomapa.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +75,8 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
                 }
             }
         });
+
+
 
 
 
@@ -108,7 +106,9 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
 
     @Override
     public void onMapLongClick(LatLng latLng) {
-        showDialog();
+        String lat = String.valueOf(latLng.latitude);
+        String lon = String.valueOf(latLng.longitude);
+        showDialog(iduser,lat,lon);
         Toast.makeText(getContext(), "Lat: " + String.valueOf(latLng.latitude) + "Long: " + String.valueOf(latLng.longitude), Toast.LENGTH_SHORT).show();
         mMap.addMarker(new MarkerOptions().position(latLng));
     }
@@ -116,12 +116,13 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
 
 
 
-    public void showDialog(/*String descricao*/){
+    public void showDialog(Integer id,String lat, String lon){
         AddMarcador dialog = new AddMarcador();
-
-        //Bundle args = new Bundle();
-        //args.putString("desc", descricao);
-        //dialog.setArguments(args);
+        Bundle args = new Bundle();
+        args.putInt("id", id);
+        args.putString("lat",lat);
+        args.putString("lon",lon);
+        dialog.setArguments(args);
         dialog.show(getFragmentManager(),"AddMarcador");
 
     }

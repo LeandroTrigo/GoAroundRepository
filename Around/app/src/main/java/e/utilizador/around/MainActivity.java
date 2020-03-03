@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ImageView edit,fotoperfil;
     TextView nomeperfil;
     String nomeuser;
+    Integer iduser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +57,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (extras != null) {
             anonimo = extras.getBoolean("anonimo");
             nomeuser = extras.getString("nome");
+            iduser = extras.getInt("id");
         }
 
-        Log.d("ANONIMO", "onCreate: " +anonimo);
+
+        Log.d("USER", "onNavigationItemSelected: " +iduser);
 
         Menu nav_Menu = navigationView.getMenu();
 
@@ -80,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         navigationView.setNavigationItemSelectedListener(this);
+
 
         if(CheckFragment.getInstance().fragmento != null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, CheckFragment.getInstance().fragmento).commit();
@@ -104,9 +108,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.nav_report){
-            Fragment fragment = new ReportFragment();
+            ReportFragment fragment = new ReportFragment();
             CheckFragment.getInstance().fragmento = fragment;
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReportFragment()).addToBackStack(null).commit();
+            Bundle args = new Bundle();
+            args.putInt("id", iduser);
+            fragment.setArguments(args);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack(null).commit();
         }
         else if(id == R.id.nav_reports){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReportsFragment()).addToBackStack(null).commit();
@@ -114,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if(id == R.id.nav_notes){
             Fragment fragment = new Notas();
             CheckFragment.getInstance().fragmento = fragment;
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Notas()).addToBackStack(null).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
         }
         else if(id == R.id.nav_logout) {
             finish();

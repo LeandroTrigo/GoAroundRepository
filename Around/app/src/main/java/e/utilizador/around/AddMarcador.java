@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,15 +22,26 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddMarcador extends DialogFragment {
 
     DatabaseHelper db;
-    Button foto;
+    Button foto,adicionarponto;
     ImageView imageView;
+    EditText titulo,descricao;
+    Integer id;
+    String latitude,longitude;
 
 
     //Permissões
@@ -42,12 +54,21 @@ public class AddMarcador extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.adicionar_marcador,container,false);
-        //descricao = getArguments().getString("desc");
+
+        id = getArguments().getInt("id");
+        latitude = getArguments().getString("lat");
+        longitude = getArguments().getString("lon");
+
+        Log.d("TESTE", "LATITUDE: " +latitude + "LONGITUDE: " +longitude );
 
 
         db = new DatabaseHelper(getActivity());
         imageView = view.findViewById(R.id.imageView);
         foto = view.findViewById(R.id.button_foto);
+        titulo = view.findViewById(R.id.titulo_ponto);
+        descricao = view.findViewById(R.id.descricao_ponto);
+        adicionarponto = view.findViewById(R.id.button_adicionar_ponto);
+
 
         foto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +151,53 @@ public class AddMarcador extends DialogFragment {
         //Invocamos a atividade e recebemos uma fotografia
         startActivityForResult(photoPickerIntent, IMAGE_GALLERY_REQUEST);
     }
+
+
+
+    private void addPonto() {
+        String url = MySingleton.server + "pontos/criarponto";
+
+        StringRequest postResquest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+
+                        try {
+
+                            Log.d("SOMETING", "FUNCIONOU");
+
+                        } catch (Exception e) {
+                            notificarErro(getString(R.string.erro),getString(R.string.webservice));
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        notificarErro(getString(R.string.erro), "Por Favor Verifique a Sua Conexão!");
+                    }
+                }) {
+
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parametros = new HashMap<>();
+
+                parametros.put("Titulo", titulo.getText().toString().trim());
+                parametros.put("Descricao", descricao.getText().toString().trim());
+                parametros.put("IdUtilizador",id.toString().trim());
+                parametros.put("Latitude",latitude);
+                parametros.put("Longitude",longitude);
+
+                return parametros;
+            }
+        };
+
+        MySingleton.getInstance(getContext()).addToRequestQueue(postResquest);
+    }
+
+
 
 
     public void notificarSucesso(String titulo, String mensagem) {
