@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,6 +30,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -42,6 +45,8 @@ public class AddMarcador extends DialogFragment {
     EditText titulo,descricao;
     Integer id;
     String latitude,longitude;
+
+
 
 
     //Permissões
@@ -59,8 +64,6 @@ public class AddMarcador extends DialogFragment {
         latitude = getArguments().getString("lat");
         longitude = getArguments().getString("lon");
 
-        Log.d("TESTE", "LATITUDE: " +latitude + "LONGITUDE: " +longitude );
-
 
         db = new DatabaseHelper(getActivity());
         imageView = view.findViewById(R.id.imageView);
@@ -77,6 +80,16 @@ public class AddMarcador extends DialogFragment {
             }
         });
 
+        adicionarponto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                addPonto();
+
+
+            }
+        });
+
 
 
         return view;
@@ -88,9 +101,9 @@ public class AddMarcador extends DialogFragment {
         switch (requestCode){
             case PERMISSSION_REQUEST:
                 if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    notificarSucesso(getResources().getString(R.string.sucesso),"Permissões Concedidas!");
+                    notificarSucesso(getResources().getString(R.string.sucesso),getString(R.string.permissions_ok));
                 }else{
-                    notificarErro(getResources().getString(R.string.erro),"Permissões Negadas!");
+                    notificarErro(getResources().getString(R.string.erro),getString(R.string.permissions_denied));
                 }
         }
     }
@@ -102,7 +115,7 @@ public class AddMarcador extends DialogFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == getActivity().RESULT_OK) {
             if (requestCode == CAMERA_REQUEST_CODE) {
-                notificarSucesso(getResources().getString(R.string.sucesso),"Imagem Guardada!");
+                notificarSucesso(getResources().getString(R.string.sucesso),getString(R.string.image_saved));
             }
 
             if (requestCode == IMAGE_GALLERY_REQUEST) {
@@ -127,7 +140,7 @@ public class AddMarcador extends DialogFragment {
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
-                    notificarErro(getResources().getString(R.string.erro),"Imagem não guardada!");
+                    notificarErro(getResources().getString(R.string.erro),getString(R.string.image_not_saved));
                 }
 
             }
@@ -165,10 +178,11 @@ public class AddMarcador extends DialogFragment {
 
                         try {
 
-                            Log.d("SOMETING", "FUNCIONOU");
+                            notificarSucesso(getString(R.string.sucesso),getString(R.string.report_done));
+                            getDialog().dismiss();
 
                         } catch (Exception e) {
-                            notificarErro(getString(R.string.erro),getString(R.string.webservice));
+                            notificarErro(getString(R.string.erro),getString(R.string.report_error));
                         }
 
                     }
@@ -176,7 +190,7 @@ public class AddMarcador extends DialogFragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        notificarErro(getString(R.string.erro), "Por Favor Verifique a Sua Conexão!");
+                        notificarErro(getString(R.string.erro), getString(R.string.conexao));
                     }
                 }) {
 
@@ -184,17 +198,36 @@ public class AddMarcador extends DialogFragment {
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parametros = new HashMap<>();
 
+
+
+
+                BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+                Bitmap bitmap = drawable.getBitmap();
+
+
+
+
+
                 parametros.put("Titulo", titulo.getText().toString().trim());
                 parametros.put("Descricao", descricao.getText().toString().trim());
                 parametros.put("IdUtilizador",id.toString().trim());
                 parametros.put("Latitude",latitude);
                 parametros.put("Longitude",longitude);
+                parametros.put("Imagem",convertImage(bitmap));
 
                 return parametros;
             }
         };
 
         MySingleton.getInstance(getContext()).addToRequestQueue(postResquest);
+    }
+
+
+    public String convertImage(Bitmap bitmap){
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        return android.util.Base64.encodeToString(byteArray, android.util.Base64.DEFAULT);
     }
 
 

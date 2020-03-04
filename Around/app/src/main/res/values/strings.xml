@@ -55,4 +55,11 @@
     <string name="novo_marcador">Novo Marcador</string>
     <string name="credenciais">Credências Incorretas!</string>
     <string name="webservice">Erro de Webservice</string>
+    <string name="permissions_ok">Permissões Concedidas!</string>
+    <string name="permissions_denied">Permissões Negadas!</string>
+    <string name="image_saved">Imagem Guardada!</string>
+    <string name="image_not_saved">Imagem não guardada!</string>
+    <string name="report_done">Problema Reportado com Sucesso!</string>
+    <string name="report_error">Erro ao Marcar Ponto</string>
+    <string name="conexao">Por Favor Verifique a Sua Conexão!</string>
 </resources>
