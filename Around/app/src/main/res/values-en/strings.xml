@@ -62,4 +62,7 @@
     <string name="report_done">Problema Reported with Success!</string>
     <string name="report_error">Error Reporting Problem!</string>
     <string name="conexao">Please Check your Connection!</string>
+    <string name="ativar_gps">"Your GPS seems to be disabled, do you want to enable it?"</string>
+    <string name="sim">Yes</string>
+    <string name="nao">No</string>
 </resources>

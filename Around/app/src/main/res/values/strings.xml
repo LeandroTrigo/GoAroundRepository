@@ -62,4 +62,8 @@
     <string name="report_done">Problema Reportado com Sucesso!</string>
     <string name="report_error">Erro ao Marcar Ponto</string>
     <string name="conexao">Por Favor Verifique a Sua Conexão!</string>
+    <string name="ativar_gps">O seu GPS encontra-se desativado, pretende ativálo?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="reports">Os Meus Reports</string>
 </resources>
