@@ -11,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -220,6 +221,9 @@ public class AddMarcador extends DialogFragment {
         };
 
         MySingleton.getInstance(getContext()).addToRequestQueue(postResquest);
+
+
+
     }
 
 
@@ -229,6 +233,9 @@ public class AddMarcador extends DialogFragment {
         byte[] byteArray = byteArrayOutputStream.toByteArray();
         return android.util.Base64.encodeToString(byteArray, android.util.Base64.DEFAULT);
     }
+
+
+
 
 
 
