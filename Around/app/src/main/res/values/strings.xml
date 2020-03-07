@@ -66,4 +66,8 @@
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
     <string name="reports">Os Meus Reports</string>
+    <string name="info_ponto">Adicionar Novo Ponto</string>
+    <string name="desc_info_ponto">Para inserir um ponto numa localização que não a atual, por favor faça hold do ecrãn.</string>
+    <string name="pagina_inicial">Página Inicial</string>
+    <string name="creditos">Leandro Wilson da Costa Trigo\nInstituto Politécnico de Viana do Castelo\n3º Ano Engenharia Informática</string>
 </resources>

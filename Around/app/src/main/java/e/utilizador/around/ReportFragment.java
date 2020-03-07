@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -31,6 +32,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -80,11 +82,11 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
 
         Bundle args = getArguments();
         iduser = args.getInt("id");
-        Log.d("USER", "onCreateView: " + iduser);
 
 
         tipomapa = view.findViewById(R.id.button_tipo_mapa);
         marcarponto = view.findViewById(R.id.button_waypoint);
+        info = view.findViewById(R.id.button_info);
 
         tipomapa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +113,13 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
             }
         });
 
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogPontos();
+            }
+        });
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
 
 
@@ -127,14 +136,9 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
 
+
     }
 
-
-    @Override
-    public void onMapClick(LatLng latLng) {
-
-
-}
 
 
     @Override
@@ -142,7 +146,7 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         String lat = String.valueOf(latLng.latitude);
         String lon = String.valueOf(latLng.longitude);
         showDialog(iduser,lat,lon);
-       mMap.addMarker(new MarkerOptions().position(latLng));
+        mMap.addMarker(new MarkerOptions().position(latLng));
     }
 
 
@@ -360,4 +364,14 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
     }
 
 
+    public void showDialogPontos(){
+        DialogPontos dialog = new DialogPontos();
+        dialog.show(getFragmentManager(),"DialogPontos");
+
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+
+    }
 }
