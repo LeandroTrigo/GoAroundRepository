@@ -70,4 +70,9 @@
     <string name="desc_info_ponto">Para inserir um ponto numa localização que não a atual, por favor faça hold do ecrãn.</string>
     <string name="pagina_inicial">Página Inicial</string>
     <string name="creditos">Leandro Wilson da Costa Trigo\nInstituto Politécnico de Viana do Castelo\n3º Ano Engenharia Informática</string>
+    <string name="credits">Créditos</string>
+    <string name="email_client">Escolha um cliente de email</string>
+    <string name="telemovel">Télemovel</string>
+    <string name="call">Ligar</string>
+    <string name="enviar_email">Enviar Email</string>
 </resources>

@@ -70,4 +70,9 @@
     <string name="desc_info_ponto">To add a marker in a chosen position please hold the screen.</string>
     <string name="pagina_inicial">Home Page</string>
     <string name="creditos">Leandro Wilson da Costa Trigo\nPolytechnic Institute of Viana do Castelo\n 3rd Year of Computer Engineering</string>
+    <string name="credits">Crédits</string>
+    <string name="email_client">Chose an Email Client.</string>
+    <string name="telemovel">Cellphone</string>
+    <string name="call">Call</string>
+    <string name="enviar_email">Send Email</string>
 </resources>
