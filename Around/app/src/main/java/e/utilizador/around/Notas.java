@@ -85,7 +85,6 @@ public class Notas extends Fragment implements Adapter.OnNoteListener {
 
     public void showDialog(String descricao){
         CustomDialog dialog = new CustomDialog();
-
         Bundle args = new Bundle();
         args.putString("desc", descricao);
         dialog.setArguments(args);

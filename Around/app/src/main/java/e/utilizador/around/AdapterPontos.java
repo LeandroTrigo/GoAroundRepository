@@ -41,7 +41,6 @@ public class AdapterPontos extends RecyclerView.Adapter<AdapterPontos.ViewHolder
         String titulo = pontos.get(i).getTitulo();
         String designacaoimagem = pontos.get(i).getImagem();
 
-        Log.d("TESTE", "onBindViewHolder: " + designacaoimagem);
 
         viewHolder.descricao.setText(descricao);
         viewHolder.titulo.setText(titulo);

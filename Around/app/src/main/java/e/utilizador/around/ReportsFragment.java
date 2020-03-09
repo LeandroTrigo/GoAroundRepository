@@ -62,7 +62,22 @@ public class ReportsFragment extends Fragment implements AdapterPontos.OnPontoLi
 
     @Override
     public void onPontoClick(int position) {
-        Log.d("CLICK", "onPontoClick: " + "CLICADO");
+
+        String titulo = pontos.get(position).getTitulo();
+        String descricao = pontos.get(position).getDescricao();
+        String imagem = pontos.get(position).getImagem();
+        int id = pontos.get(position).getIdPonto();
+
+
+        EditPontosFragment fragment = new EditPontosFragment();
+        CheckFragment.getInstance().fragmento = fragment;
+        Bundle args = new Bundle();
+        args.putString("titulo", titulo);
+        args.putString("descricao",descricao);
+        args.putString("imagem",imagem);
+        args.putInt("id",id);
+        fragment.setArguments(args);
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack(null).commit();
     }
 
     public void getPontosUser() {

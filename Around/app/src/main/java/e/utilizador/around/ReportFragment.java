@@ -39,8 +39,11 @@ import com.google.android.gms.tasks.Task;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
 
-public class ReportFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener {
+
+public class ReportFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnInfoWindowClickListener{
 
     private GoogleMap mMap;
     private Button tipomapa,marcarponto,info;
@@ -52,6 +55,7 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
     private Location mLastKnownLocation;
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
     private static final int DEFAULT_ZOOM = 15;
+    private Map<Marker, String> allMarkersMap = new HashMap<Marker, String>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -130,6 +134,7 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         mMap = googleMap;
         googleMap.setOnMapClickListener(this);
         googleMap.setOnMapLongClickListener(this);
+        googleMap.setOnInfoWindowClickListener(this);
 
         updateLocationUI();
 
@@ -186,8 +191,11 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
                             double longitude = obj.getDouble("Longitude");
                             String titulo = obj.getString("Titulo");
                             String descricao = obj.getString("Descricao");
-                            LatLng statue = new LatLng(latitude, longitude);
-                            mMap.addMarker(new MarkerOptions().position(statue).title(titulo).snippet(descricao));
+                            String imagem = obj.getString("Imagem");
+                            LatLng coordenadas = new LatLng(latitude, longitude);
+
+                            Marker marker = mMap.addMarker(new MarkerOptions().position(coordenadas).title(titulo).snippet(descricao));
+                            allMarkersMap.put(marker, imagem);
 
 
                         }
@@ -373,5 +381,15 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
     @Override
     public void onMapClick(LatLng latLng) {
 
+    }
+
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        DialogImagem dialog = new DialogImagem();
+        Bundle args = new Bundle();
+        args.putString("imagem", allMarkersMap.get(marker));
+        dialog.setArguments(args);
+        dialog.show(getFragmentManager(),"DialogImagem");
     }
 }
