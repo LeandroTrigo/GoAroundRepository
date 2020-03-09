@@ -181,7 +181,6 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
 
                 try {
 
-                    Log.d("RESPONSE", "onResponse: " +response.get(0));
 
 
                         for (int i = 0; i < response.length(); i++) {

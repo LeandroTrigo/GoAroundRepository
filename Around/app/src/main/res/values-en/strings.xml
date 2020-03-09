@@ -75,4 +75,7 @@
     <string name="telemovel">Cellphone</string>
     <string name="call">Call</string>
     <string name="enviar_email">Send Email</string>
+    <string name="ponto_updated">Marker Successfuly Updated!</string>
+    <string name="ponto_deleted">Marker Successfuly Deleted!</string>
+    <string name="email_existe">Email Already Registred!</string>
 </resources>

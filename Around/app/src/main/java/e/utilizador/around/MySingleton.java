@@ -14,7 +14,7 @@ public class MySingleton {
     private  RequestQueue requestQueue;
     private static Context mCtx;
 
-    public static String server = "http://192.168.43.213:5000/";
+    public static String server = "http://192.168.1.66:5000/";
 
     private MySingleton(Context context) {
         mCtx = context;

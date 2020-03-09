@@ -75,4 +75,7 @@
     <string name="telemovel">Télemovel</string>
     <string name="call">Ligar</string>
     <string name="enviar_email">Enviar Email</string>
+    <string name="ponto_updated">Ponto Atualizado com Sucesso!</string>
+    <string name="ponto_deleted">Ponto Eliminado com Sucesso!</string>
+    <string name="email_existe">O Email Introduzido já se Encontra Registado!</string>
 </resources>
