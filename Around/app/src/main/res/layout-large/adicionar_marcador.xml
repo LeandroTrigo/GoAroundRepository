@@ -28,7 +28,7 @@
         android:background="#fff"
         android:layout_margin="16dp"
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         />
 
     <Button
@@ -41,20 +41,33 @@
         android:layout_centerHorizontal="true"
         android:textAllCaps="false"/>
 
-    <androidx.cardview.widget.CardView
+
+
+    <ScrollView
         android:id="@+id/card_titulo"
         android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/button_foto"
-        android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="true">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:backgroundTint="@android:color/transparent"
         app:cardCornerRadius="5dp">
 
         <EditText
             android:id="@+id/titulo_ponto"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:hint="Titulo"
             android:padding="10dp"
             android:textColor="#000"
@@ -62,20 +75,34 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
+    </LinearLayout>
+
+    </ScrollView>
+
+    <ScrollView
         android:id="@+id/card_descricao"
         android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/card_titulo"
-        android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="true">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:backgroundTint="@android:color/transparent"
         app:cardCornerRadius="5dp">
 
         <EditText
             android:id="@+id/descricao_ponto"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:hint="Descricao"
             android:padding="10dp"
             android:textColor="#000"
@@ -83,6 +110,10 @@
 
 
     </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    </ScrollView>
 
 
 

@@ -78,4 +78,5 @@
     <string name="ponto_updated">Ponto Atualizado com Sucesso!</string>
     <string name="ponto_deleted">Ponto Eliminado com Sucesso!</string>
     <string name="email_existe">O Email Introduzido já se Encontra Registado!</string>
+    <string name="escolher_imagem">Por Favor Escolha uma Imagem!</string>
 </resources>

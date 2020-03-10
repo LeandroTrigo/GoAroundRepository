@@ -84,10 +84,7 @@ public class AddMarcador extends DialogFragment {
         adicionarponto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                addPonto();
-
-
+            addPonto();
             }
         });
 
@@ -191,7 +188,7 @@ public class AddMarcador extends DialogFragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        notificarErro(getString(R.string.erro), getString(R.string.conexao));
+                        notificarErro(getString(R.string.erro),getString(R.string.escolher_imagem));
                     }
                 }) {
 

@@ -78,4 +78,5 @@
     <string name="ponto_updated">Marker Successfuly Updated!</string>
     <string name="ponto_deleted">Marker Successfuly Deleted!</string>
     <string name="email_existe">Email Already Registred!</string>
+    <string name="escolher_imagem">Please Chose an Image!</string>
 </resources>
