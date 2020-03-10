@@ -55,4 +55,27 @@
     <string name="novo_marcador">Novo Marcador</string>
     <string name="credenciais">Credências Incorretas!</string>
     <string name="webservice">Erro de Webservice</string>
+    <string name="permissions_ok">Permissões Concedidas!</string>
+    <string name="permissions_denied">Permissões Negadas!</string>
+    <string name="image_saved">Imagem Guardada!</string>
+    <string name="image_not_saved">Imagem não guardada!</string>
+    <string name="report_done">Problema Reportado com Sucesso!</string>
+    <string name="report_error">Erro ao Marcar Ponto</string>
+    <string name="conexao">Por Favor Verifique a Sua Conexão!</string>
+    <string name="ativar_gps">O seu GPS encontra-se desativado, pretende ativálo?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="reports">Os Meus Reports</string>
+    <string name="info_ponto">Adicionar Novo Ponto</string>
+    <string name="desc_info_ponto">Para inserir um ponto numa localização que não a atual, por favor faça hold do ecrãn.</string>
+    <string name="pagina_inicial">Página Inicial</string>
+    <string name="creditos">Leandro Wilson da Costa Trigo\nInstituto Politécnico de Viana do Castelo\n3º Ano Engenharia Informática</string>
+    <string name="credits">Créditos</string>
+    <string name="email_client">Escolha um cliente de email</string>
+    <string name="telemovel">Télemovel</string>
+    <string name="call">Ligar</string>
+    <string name="enviar_email">Enviar Email</string>
+    <string name="ponto_updated">Ponto Atualizado com Sucesso!</string>
+    <string name="ponto_deleted">Ponto Eliminado com Sucesso!</string>
+    <string name="email_existe">O Email Introduzido já se Encontra Registado!</string>
 </resources>

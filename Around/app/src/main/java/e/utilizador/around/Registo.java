@@ -75,7 +75,7 @@ public class Registo extends AppCompatActivity {
                                 Intent intent = new Intent(Registo.this, DoLogin.class);
                                 startActivity(intent);
                             } else {
-                                notificarErro(getString(R.string.erro), "O Email Introduzido já se Encontra Registado!");
+                                notificarErro(getString(R.string.erro), getString(R.string.email_existe));
                             }
 
                         } catch (Exception e) {
@@ -87,7 +87,7 @@ public class Registo extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        notificarErro(getString(R.string.erro), "Por Favor Verifique a Sua Conexão!");
+                        notificarErro(getString(R.string.erro), getString(R.string.conexao));
                     }
                 }) {
 
