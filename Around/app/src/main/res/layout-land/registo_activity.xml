@@ -27,6 +27,7 @@
         app:layout_constraintTop_toBottomOf="@id/registo_text">
 
         <EditText
+            android:id="@+id/nome_user"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Nome"
@@ -60,6 +61,7 @@
         app:layout_constraintTop_toBottomOf="@id/card_nome">
 
         <EditText
+            android:id="@+id/email_user"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Email"
@@ -94,6 +96,7 @@
         app:layout_constraintTop_toBottomOf="@id/card_email">
 
         <EditText
+            android:id="@+id/pass_user"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -126,6 +129,7 @@
         app:layout_constraintTop_toBottomOf="@id/card_pass">
 
         <EditText
+            android:id="@+id/confirm_pass"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Confirmar Password"
@@ -147,6 +151,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:id="@+id/registar_button"
         style="@style/button"
         android:layout_marginTop="16dp"
         android:text="Registar"

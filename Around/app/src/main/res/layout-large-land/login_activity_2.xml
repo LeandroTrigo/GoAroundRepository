@@ -63,6 +63,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <EditText
+                android:id="@+id/email_login"
                 android:layout_width="400dp"
                 android:textSize="40dp"
                 android:layout_height="wrap_content"
@@ -101,6 +102,7 @@
 
 
             <EditText
+                android:id="@+id/pass_login"
                 android:layout_width="400dp"
                 android:textSize="40dp"
                 android:layout_height="wrap_content"

@@ -95,6 +95,11 @@ public class DoLogin extends AppCompatActivity {
                             Claim subscriptionMetaData =jwt.getClaim("Nome");
                             String parsedValue = subscriptionMetaData.asString();
 
+                            Claim subscriptionMetaData2 =jwt.getClaim("IdUtilizador");
+                            Integer parsedValue2 = subscriptionMetaData2.asInt();
+
+                            Log.d("USER", "onResponse: " +parsedValue2);
+
 
 
                                 //Se o utilizador escolher salvar a sua sessao a variavel saveLogin passa a true e guardamos o seu username e password.
@@ -115,6 +120,7 @@ public class DoLogin extends AppCompatActivity {
                                 Bundle b = new Bundle();
                                 b.putBoolean("anomnimo", false);
                                 b.putString("nome",parsedValue);
+                                b.putInt("id",parsedValue2);
                                 intent.putExtras(b);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);

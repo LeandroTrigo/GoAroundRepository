@@ -47,6 +47,7 @@
         app:layout_constraintTop_toBottomOf="@id/textlogin">
 
         <EditText
+            android:id="@+id/email_login"
             android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:hint="@string/login_email_pt"
@@ -84,6 +85,7 @@
 
 
         <EditText
+            android:id="@+id/pass_login"
             android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:hint="@string/login_pass_pt"

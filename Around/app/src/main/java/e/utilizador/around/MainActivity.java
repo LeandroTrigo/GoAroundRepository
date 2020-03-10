@@ -11,6 +11,7 @@ import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ImageView edit,fotoperfil;
     TextView nomeperfil;
     String nomeuser;
+    Integer iduser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +57,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (extras != null) {
             anonimo = extras.getBoolean("anonimo");
             nomeuser = extras.getString("nome");
+            iduser = extras.getInt("id");
         }
 
-        Log.d("ANONIMO", "onCreate: " +anonimo);
+
+        Log.d("USER", "onNavigationItemSelected: " +iduser);
 
         Menu nav_Menu = navigationView.getMenu();
 
@@ -80,8 +84,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
+        if(CheckFragment.getInstance().fragmento != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, CheckFragment.getInstance().fragmento).commit();
+        }
+        else{
+            HomeFragment home = new HomeFragment();
+            CheckFragment.getInstance().fragmento = home;
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, home).commit();
+        }
     }
 
     @Override
@@ -97,13 +108,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.nav_report){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReportFragment()).addToBackStack(null).commit();
+            ReportFragment fragment = new ReportFragment();
+            CheckFragment.getInstance().fragmento = fragment;
+            Bundle args = new Bundle();
+            args.putInt("id", iduser);
+            fragment.setArguments(args);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack(null).commit();
         }
         else if(id == R.id.nav_reports){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReportsFragment()).addToBackStack(null).commit();
         }
         else if(id == R.id.nav_notes){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Notas()).addToBackStack(null).commit();
+            Fragment fragment = new Notas();
+            CheckFragment.getInstance().fragmento = fragment;
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
         }
         else if(id == R.id.nav_logout) {
             finish();
