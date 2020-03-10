@@ -116,10 +116,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack(null).commit();
         }
         else if(id == R.id.nav_reports){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReportsFragment()).addToBackStack(null).commit();
+            ReportsFragment fragment = new ReportsFragment();
+            CheckFragment.getInstance().fragmento = fragment;
+            Bundle args = new Bundle();
+            args.putInt("id", iduser);
+            fragment.setArguments(args);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack(null).commit();
         }
         else if(id == R.id.nav_notes){
-            Fragment fragment = new Notas();
+            Notas fragment = new Notas();
+            CheckFragment.getInstance().fragmento = fragment;
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+        }
+        else if(id == R.id.nav_credits){
+            CreditosFragment fragment = new CreditosFragment();
+            CheckFragment.getInstance().fragmento = fragment;
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+        }
+        else if(id == R.id.nav_sup){
+            SupportFragment fragment = new SupportFragment();
             CheckFragment.getInstance().fragmento = fragment;
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
         }

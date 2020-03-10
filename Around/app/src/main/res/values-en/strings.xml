@@ -62,4 +62,20 @@
     <string name="report_done">Problema Reported with Success!</string>
     <string name="report_error">Error Reporting Problem!</string>
     <string name="conexao">Please Check your Connection!</string>
+    <string name="ativar_gps">"Your GPS seems to be disabled, do you want to enable it?"</string>
+    <string name="sim">Yes</string>
+    <string name="nao">No</string>
+    <string name="reports">My Reports</string>
+    <string name="info_ponto">Add New Marker</string>
+    <string name="desc_info_ponto">To add a marker in a chosen position please hold the screen.</string>
+    <string name="pagina_inicial">Home Page</string>
+    <string name="creditos">Leandro Wilson da Costa Trigo\nPolytechnic Institute of Viana do Castelo\n 3rd Year of Computer Engineering</string>
+    <string name="credits">Crédits</string>
+    <string name="email_client">Chose an Email Client.</string>
+    <string name="telemovel">Cellphone</string>
+    <string name="call">Call</string>
+    <string name="enviar_email">Send Email</string>
+    <string name="ponto_updated">Marker Successfuly Updated!</string>
+    <string name="ponto_deleted">Marker Successfuly Deleted!</string>
+    <string name="email_existe">Email Already Registred!</string>
 </resources>
