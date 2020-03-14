@@ -138,6 +138,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             CheckFragment.getInstance().fragmento = fragment;
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
         }
+        else if(id == R.id.nav_settings){
+            DefinitionsFragment fragment = new DefinitionsFragment();
+            CheckFragment.getInstance().fragmento = fragment;
+            Bundle args = new Bundle();
+            args.putBoolean("anonimo", anonimo);
+            args.putString("nome",nomeuser);
+            args.putInt("id",iduser);
+            fragment.setArguments(args);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+
+        }
         else if(id == R.id.nav_logout) {
             finish();
         }

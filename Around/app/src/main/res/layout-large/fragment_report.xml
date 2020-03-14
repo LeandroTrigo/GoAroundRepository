@@ -46,6 +46,7 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/card_info_ponto"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:backgroundTint="#164094"
@@ -70,7 +71,7 @@
         android:backgroundTint="#164094"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/card_info_ponto"
         android:layout_alignParentTop="true">
 
         <ImageView

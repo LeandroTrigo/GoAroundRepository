@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,7 +70,10 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
     private SensorManager sensorManager;
     private TextView stepscounter;
     private boolean running;
-    private int steps = 0;
+    private int steps;
+    private int oldsteps;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -80,12 +84,10 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
                 .findFragmentById(R.id.mapa);
         mapFragment.getMapAsync(this);
-
+        getPontos();
     }
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this.getContext());
-
-        getPontos();
 
         return view;
 
@@ -107,6 +109,13 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         info = view.findViewById(R.id.button_info);
         stepscounter = view.findViewById(R.id.step_counter);
         sensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
+        stepscounter.setText("0");
+
+        sharedPreferences = getContext().getSharedPreferences("loginref", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        oldsteps = sharedPreferences.getInt("steps",0);
+
+
 
         tipomapa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -411,11 +420,13 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-    if(running){
-        steps = Math.round(event.values[0]);
-        stepscounter.setText(String.valueOf(steps));
-    }
 
+    if(running){
+        steps = Math.round(event.values[0]) - oldsteps;
+        stepscounter.setText(String.valueOf(steps));
+        editor.putInt("steps",Math.round(event.values[0]));
+        editor.commit();
+    }
 
     }
 
@@ -433,7 +444,7 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         if(count != null){
             sensorManager.registerListener(this,count,SensorManager.SENSOR_DELAY_UI);
         }else{
-            Log.d("ERRO", "NONONONONO");
+            Log.d("ERRO", getString(R.string.sensor));
         }
     }
 

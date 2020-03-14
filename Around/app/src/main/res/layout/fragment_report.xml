@@ -45,6 +45,7 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/card_info_ponto"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:backgroundTint="#164094"
@@ -64,12 +65,12 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:backgroundTint="#164094"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/card_info_ponto"
         android:layout_alignParentTop="true">
 
             <ImageView
@@ -84,6 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
+                android:layout_marginRight="16dp"
                 android:layout_gravity="center_vertical"
                 android:textColor="#fff"
                 android:layout_marginLeft="25dp"

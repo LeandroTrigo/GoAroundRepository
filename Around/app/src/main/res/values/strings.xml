@@ -79,4 +79,10 @@
     <string name="ponto_deleted">Ponto Eliminado com Sucesso!</string>
     <string name="email_existe">O Email Introduzido já se Encontra Registado!</string>
     <string name="escolher_imagem">Por Favor Escolha uma Imagem!</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="editar">Editar</string>
+    <string name="sensor">Sensor de Passos não Disponivel!</string>
+    <string name="definitions">Defenições</string>
+    <string name="language">Linguagem Atualizada com Sucesso!</string>
+    <string name="chose_language">Escolha a sua Liguagem</string>
 </resources>

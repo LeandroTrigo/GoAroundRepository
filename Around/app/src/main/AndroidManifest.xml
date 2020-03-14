@@ -22,11 +22,13 @@
 
         <activity
             android:name=".MainActivity"
+            android:configChanges="screenSize|keyboardHidden"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name="Login"
+            android:configChanges="screenSize|keyboardHidden"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,6 +38,7 @@
         </activity>
         <activity
             android:name="DoLogin"
+            android:configChanges="screenSize|keyboardHidden"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,6 +47,7 @@
         </activity>
         <activity
             android:name=".Registo"
+            android:configChanges="screenSize|keyboardHidden"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
