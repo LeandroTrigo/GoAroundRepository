@@ -1,8 +1,11 @@
 package e.utilizador.around;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,6 +37,9 @@ public class ReportsFragment extends Fragment implements AdapterPontos.OnPontoLi
     int iduser;
     Ponto ponto;
 
+    private SensorManager sensorManager;
+    private Sensor sensor;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,6 +62,13 @@ public class ReportsFragment extends Fragment implements AdapterPontos.OnPontoLi
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapterPontos = new AdapterPontos(getContext(),pontos,this);
         recyclerView.setAdapter(adapterPontos);
+
+
+        sensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+
+        Log.d("TESTE", "onViewCreated: " + sensor);
+
 
 
     }
