@@ -193,6 +193,7 @@ public class EditPontosFragment extends Fragment {
 
                         try {
                             notificarSucesso(getString(R.string.sucesso),getString(R.string.ponto_deleted));
+                            getActivity().onBackPressed();
                         } catch (Exception ex) {
                             notificarErro(getString(R.string.erro), getString(R.string.webservice));
                         }
