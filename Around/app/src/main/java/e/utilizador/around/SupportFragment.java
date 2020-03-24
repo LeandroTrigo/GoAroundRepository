@@ -20,7 +20,7 @@ public class SupportFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        getActivity().setTitle(R.string.credits);
+        getActivity().setTitle(R.string.suporte_pt);
         if(CheckFragment.getInstance().fragmento != null) {
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, CheckFragment.getInstance().fragmento).commit();
         }
