@@ -85,4 +85,6 @@
     <string name="definitions">Definitions</string>
     <string name="language">Language Successfully Updated!</string>
     <string name="chose_language">Choose ur Language</string>
+    <string name="notification">Notification</string>
+    <string name="mapa">Welcome to Our Map!</string>
 </resources>

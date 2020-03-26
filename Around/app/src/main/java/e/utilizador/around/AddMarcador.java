@@ -51,7 +51,6 @@ public class AddMarcador extends DialogFragment {
     EditText titulo,descricao;
     Integer id;
     String latitude,longitude;
-    NotificationManagerCompat notificationManagerCompat;
 
 
 
@@ -78,9 +77,6 @@ public class AddMarcador extends DialogFragment {
         titulo = view.findViewById(R.id.titulo_ponto);
         descricao = view.findViewById(R.id.descricao_ponto);
         adicionarponto = view.findViewById(R.id.button_adicionar_ponto);
-        notificationManagerCompat = NotificationManagerCompat.from(this.getContext());
-
-        sendNotification(view);
 
 
         foto.setOnClickListener(new View.OnClickListener() {
@@ -184,7 +180,7 @@ public class AddMarcador extends DialogFragment {
 
 
                         try {
-
+                            sendNotificationFirebase();
                             notificarSucesso(getString(R.string.sucesso),getString(R.string.report_done));
                             getDialog().dismiss();
 
@@ -274,14 +270,40 @@ public class AddMarcador extends DialogFragment {
                 .show();
     }
 
-    public void sendNotification(View view){
-        Notification notification = new NotificationCompat.Builder(this.getContext(), App.CHANNEL_1_ID)
-                .setSmallIcon(R.drawable.icon).setContentTitle("Notificação").setContentText("Um Novo Problema Surgiu no Mapa!")
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .build();
 
-        notificationManagerCompat.notify(1,notification);
+    public void sendNotificationFirebase(){
+        String url = MySingleton.server + "pontos/firebase";
+
+
+        StringRequest postResquest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+
+                        try {
+
+                            if(response.length() != 0 ) {
+                                Log.d("RESPOSTA", "onResponse: " +response);
+                            }
+
+                        } catch (Exception e) {
+                            notificarErro(getString(R.string.erro),getString(R.string.webservice));
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        notificarErro(getString(R.string.erro), getString(R.string.conexao));
+                    }
+                }) {
+
+        };
+
+        MySingleton.getInstance(this.getActivity()).addToRequestQueue(postResquest);
+
     }
 
 

@@ -1,6 +1,7 @@
 package e.utilizador.around;
 
 import android.app.AlertDialog;
+import android.app.Notification;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,13 +27,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -44,9 +49,17 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,6 +77,7 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
     private static final int DEFAULT_ZOOM = 15;
     private Map<Marker, String> allMarkersMap = new HashMap<Marker, String>();
+    private NotificationManagerCompat notificationManagerCompat;
 
 
     private SensorManager sensorManager;
@@ -73,7 +87,6 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
     private int oldsteps;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_report, null, false);
@@ -85,6 +98,14 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         mapFragment.getMapAsync(this);
         getPontos();
     }
+
+
+        notificationManagerCompat = NotificationManagerCompat.from(this.getContext());
+
+
+        sendPushNotification(view);
+
+
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this.getContext());
 
@@ -452,4 +473,18 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         super.onPause();
         running = false;
     }
+
+
+    public void sendPushNotification(View view){
+        Notification notification = new NotificationCompat.Builder(this.getContext(), App.CHANNEL_1_ID)
+                .setSmallIcon(R.drawable.icon).setContentTitle(getString(R.string.notification)).setContentText(getString(R.string.mapa))
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        notificationManagerCompat.notify(1,notification);
+    }
+
+
+
 }
