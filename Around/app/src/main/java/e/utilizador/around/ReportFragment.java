@@ -77,7 +77,6 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
     private static final int DEFAULT_ZOOM = 15;
     private Map<Marker, String> allMarkersMap = new HashMap<Marker, String>();
-    private NotificationManagerCompat notificationManagerCompat;
 
 
     private SensorManager sensorManager;
@@ -98,13 +97,6 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         mapFragment.getMapAsync(this);
         getPontos();
     }
-
-
-        notificationManagerCompat = NotificationManagerCompat.from(this.getContext());
-
-
-        sendPushNotification(view);
-
 
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this.getContext());
@@ -423,7 +415,6 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
 
     @Override
     public void onMapClick(LatLng latLng) {
-
     }
 
 
@@ -475,15 +466,6 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
     }
 
 
-    public void sendPushNotification(View view){
-        Notification notification = new NotificationCompat.Builder(this.getContext(), App.CHANNEL_1_ID)
-                .setSmallIcon(R.drawable.icon).setContentTitle(getString(R.string.notification)).setContentText(getString(R.string.mapa))
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .build();
-
-        notificationManagerCompat.notify(1,notification);
-    }
 
 
 

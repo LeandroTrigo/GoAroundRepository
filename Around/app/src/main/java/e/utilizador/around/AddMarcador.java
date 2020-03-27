@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +47,7 @@ import java.util.Map;
 public class AddMarcador extends DialogFragment {
 
     DatabaseHelper db;
-    Button foto,adicionarponto;
+    Button foto,adicionarponto,camera;
     ImageView imageView;
     EditText titulo,descricao;
     Integer id;
@@ -59,6 +60,7 @@ public class AddMarcador extends DialogFragment {
     private static final int PERMISSSION_REQUEST = 0;
     public static final int IMAGE_GALLERY_REQUEST = 20;
     public static final int CAMERA_REQUEST_CODE = 228;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
 
     @Nullable
@@ -74,6 +76,7 @@ public class AddMarcador extends DialogFragment {
         db = new DatabaseHelper(getActivity());
         imageView = view.findViewById(R.id.imageView);
         foto = view.findViewById(R.id.button_foto);
+        camera = view.findViewById(R.id.button_camera);
         titulo = view.findViewById(R.id.titulo_ponto);
         descricao = view.findViewById(R.id.descricao_ponto);
         adicionarponto = view.findViewById(R.id.button_adicionar_ponto);
@@ -83,6 +86,13 @@ public class AddMarcador extends DialogFragment {
             @Override
             public void onClick(View v) {
                 onImageGalleryClicked(getView());
+            }
+        });
+
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dispatchTakePictureIntent();
             }
         });
 
@@ -117,9 +127,6 @@ public class AddMarcador extends DialogFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == getActivity().RESULT_OK) {
-            if (requestCode == CAMERA_REQUEST_CODE) {
-                notificarSucesso(getResources().getString(R.string.sucesso),getString(R.string.image_saved));
-            }
 
             if (requestCode == IMAGE_GALLERY_REQUEST) {
 
@@ -146,6 +153,12 @@ public class AddMarcador extends DialogFragment {
                     notificarErro(getResources().getString(R.string.erro),getString(R.string.image_not_saved));
                 }
 
+            }
+
+            else if (requestCode == REQUEST_IMAGE_CAPTURE) {
+                Bundle extras = data.getExtras();
+                Bitmap imageBitmap = (Bitmap) extras.get("data");
+                imageView.setImageBitmap(imageBitmap);
             }
         }
     }
@@ -305,6 +318,16 @@ public class AddMarcador extends DialogFragment {
         MySingleton.getInstance(this.getActivity()).addToRequestQueue(postResquest);
 
     }
+
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+
 
 
 }

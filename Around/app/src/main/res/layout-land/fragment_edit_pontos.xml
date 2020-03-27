@@ -20,13 +20,22 @@
 
     <Button
         android:id="@+id/escolher_foto"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:text="@string/carregar_foto"
         android:padding="5dp"
         android:textAllCaps="false"
-        android:layout_marginLeft="70dp"
+        android:layout_marginLeft="12dp"
         android:layout_below="@id/edit_img_ponto"/>
+
+    <Button
+        android:id="@+id/escolher_camera"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/escolher_foto"
+        android:layout_below="@id/edit_img_ponto"
+        android:text="@string/tirar_foto"
+        android:textAllCaps="false" />
 
 
 

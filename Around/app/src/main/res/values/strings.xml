@@ -86,5 +86,6 @@
     <string name="language">Linguagem Atualizada com Sucesso!</string>
     <string name="chose_language">Escolha a sua Liguagem</string>
     <string name="notification">Notificação</string>
-    <string name="mapa">Bem-Vindo ao Nosso Mapa!</string>
+    <string name="mapa">Em caso de dúvida entre em contacto!</string>
+    <string name="tirar_foto">Tirar Foto</string>
 </resources>

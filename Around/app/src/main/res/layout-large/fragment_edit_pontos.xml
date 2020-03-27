@@ -19,16 +19,28 @@
 
     <Button
         android:id="@+id/escolher_foto"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:text="@string/carregar_foto"
         android:padding="20dp"
         android:layout_marginTop="10dp"
         android:textSize="20sp"
+        android:layout_marginLeft="275dp"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/edit_img_ponto"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/escolher_camera"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="@string/tirar_foto"
+        android:padding="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/edit_img_ponto"
+        app:layout_constraintStart_toEndOf="@id/escolher_foto"
+        android:textAllCaps="false"/>
 
 
 

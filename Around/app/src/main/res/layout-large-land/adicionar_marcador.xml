@@ -36,16 +36,30 @@
 
     <Button
         android:id="@+id/button_foto"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="15dp"
         app:layout_constraintTop_toBottomOf="@id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="10dp"
         android:padding="5dp"
         android:textSize="20sp"
         android:text="@string/carregar_foto"
+        android:textAllCaps="false" />
+
+
+    <Button
+        android:id="@+id/button_camera"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toEndOf="@id/button_foto"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:text="@string/tirar_foto"
         android:textAllCaps="false" />
 
 

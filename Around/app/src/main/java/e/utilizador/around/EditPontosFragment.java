@@ -10,6 +10,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,12 +52,13 @@ public class EditPontosFragment extends Fragment {
     String titulo,descricao,imagem;
     ImageView editimagem;
     int idponto;
-    Button editarponto, removerponto, escolherfoto;
+    Button editarponto, removerponto, escolherfoto, escolhercamera;
 
     //Permissões
     private static final int PERMISSSION_REQUEST = 0;
     public static final int IMAGE_GALLERY_REQUEST = 20;
     public static final int CAMERA_REQUEST_CODE = 228;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
 
     @Override
@@ -78,6 +80,7 @@ public class EditPontosFragment extends Fragment {
         editarponto = view.findViewById(R.id.edit_ponto);
         removerponto = view.findViewById(R.id.delete_ponto);
         escolherfoto = view.findViewById(R.id.escolher_foto);
+        escolhercamera = view.findViewById(R.id.escolher_camera);
 
 
         titulo = getArguments().getString("titulo");
@@ -107,6 +110,13 @@ public class EditPontosFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 onImageGalleryClicked(getView());
+            }
+        });
+
+        escolhercamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dispatchTakePictureIntent();
             }
         });
 
@@ -297,6 +307,11 @@ public class EditPontosFragment extends Fragment {
                 }
 
             }
+            else if (requestCode == REQUEST_IMAGE_CAPTURE) {
+                Bundle extras = data.getExtras();
+                Bitmap imageBitmap = (Bitmap) extras.get("data");
+                editimagem.setImageBitmap(imageBitmap);
+            }
         }
     }
 
@@ -317,4 +332,14 @@ public class EditPontosFragment extends Fragment {
         //Invocamos a atividade e recebemos uma fotografia
         startActivityForResult(photoPickerIntent, IMAGE_GALLERY_REQUEST);
     }
+
+
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
 }

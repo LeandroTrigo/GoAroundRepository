@@ -33,13 +33,25 @@
 
     <Button
         android:id="@+id/button_foto"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:text="Carregar foto"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@id/imageView"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/button_camera"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="@string/tirar_foto"
+        android:layout_toRightOf="@id/button_foto"
         android:layout_margin="16dp"
         android:layout_below="@id/imageView"
-        android:layout_centerHorizontal="true"
         android:textAllCaps="false"/>
+
 
 
 

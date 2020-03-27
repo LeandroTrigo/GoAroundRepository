@@ -1,5 +1,6 @@
 package e.utilizador.around;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 public class SupportFragment extends Fragment {
@@ -17,6 +20,8 @@ public class SupportFragment extends Fragment {
 
     private TextView email,tele,labeltele;
     private Button enviar,ligar;
+    private
+    NotificationManagerCompat notificationManagerCompat;;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +41,12 @@ public class SupportFragment extends Fragment {
         labeltele = getView().findViewById(R.id.label_telemovel);
         enviar = getView().findViewById(R.id.button_email);
         ligar = getView().findViewById(R.id.button_ligar);
+
+
+        notificationManagerCompat = NotificationManagerCompat.from(this.getContext());
+
+
+        sendPushNotification(view);
 
 
         enviar.setOnClickListener(new View.OnClickListener() {
@@ -69,5 +80,16 @@ public class SupportFragment extends Fragment {
         Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:"+call));
         startActivity(intent);
+    }
+
+
+    public void sendPushNotification(View view){
+        Notification notification = new NotificationCompat.Builder(this.getContext(), App.CHANNEL_1_ID)
+                .setSmallIcon(R.drawable.icon).setContentTitle(getString(R.string.notification)).setContentText(getString(R.string.mapa))
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        notificationManagerCompat.notify(1,notification);
     }
 }

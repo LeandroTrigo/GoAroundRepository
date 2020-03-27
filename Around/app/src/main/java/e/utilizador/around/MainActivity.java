@@ -1,5 +1,6 @@
 package e.utilizador.around;
 
+import android.app.Notification;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -13,6 +14,8 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -180,5 +183,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 }
