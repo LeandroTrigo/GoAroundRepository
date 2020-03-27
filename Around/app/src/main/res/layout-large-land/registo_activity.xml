@@ -16,16 +16,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_nome"
-        android:layout_marginTop="40dp"
+
+    <ScrollView
+        android:id="@+id/scroll_nome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
-        app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/registo_text">
+        app:layout_constraintTop_toBottomOf="@id/registo_text"
+        android:layout_marginTop="40dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:backgroundTint="@android:color/transparent"
+        app:cardCornerRadius="5dp">
 
         <EditText
             android:id="@+id/nome_user"
@@ -50,17 +62,33 @@
 
     </androidx.cardview.widget.CardView>
 
+    </LinearLayout>
+
+    </ScrollView>
+
+
+    <ScrollView
+        android:id="@+id/scroll_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scroll_nome"
+        android:layout_marginTop="16dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_email"
-        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:backgroundTint="@android:color/transparent"
-        app:cardCornerRadius="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_nome">
+        app:cardCornerRadius="5dp">
 
         <EditText
             android:id="@+id/email_user"
@@ -85,18 +113,32 @@
 
     </androidx.cardview.widget.CardView>
 
+    </LinearLayout>
 
+    </ScrollView>
+
+
+    <ScrollView
+        android:id="@+id/scroll_pass1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scroll_email"
+        android:layout_marginTop="16dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_pass"
-        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:backgroundTint="@android:color/transparent"
-        app:cardCornerRadius="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_email">
+        app:cardCornerRadius="5dp">
 
         <EditText
             android:id="@+id/pass_user"
@@ -119,18 +161,35 @@
         </ImageView>
     </androidx.cardview.widget.CardView>
 
+    </LinearLayout>
 
+    </ScrollView>
+
+
+
+
+
+    <ScrollView
+        android:id="@+id/scroll_pass2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scroll_pass1"
+        android:layout_marginTop="16dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_cpass"
-        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:backgroundTint="@android:color/transparent"
-        app:cardCornerRadius="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_pass">
+        app:cardCornerRadius="5dp">
 
         <EditText
             android:id="@+id/confirm_pass"
@@ -155,6 +214,10 @@
 
     </androidx.cardview.widget.CardView>
 
+    </LinearLayout>
+
+    </ScrollView>
+
     <Button
         android:id="@+id/registar_button"
         android:layout_marginTop="16dp"
@@ -168,7 +231,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_cpass"/>
+        app:layout_constraintTop_toBottomOf="@id/scroll_pass2"/>
 
 
 
