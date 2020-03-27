@@ -39,5 +39,33 @@
         app:layout_constraintTop_toBottomOf="@id/pick_language_pt"/>
 
 
+    <TextView
+        android:id="@+id/text_conta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/apagar_conta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pick_language_en"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginTop="30sp"
+        />
+
+    <Button
+        android:id="@+id/button_finger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/eliminar_conta"
+        android:background="#ff0000"
+        android:textColor="#fff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/text_conta"/>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

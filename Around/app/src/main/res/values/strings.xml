@@ -88,4 +88,13 @@
     <string name="notification">Notificação</string>
     <string name="mapa">Em caso de dúvida entre em contacto!</string>
     <string name="tirar_foto">Tirar Foto</string>
+    <string name="finger1">O seu Dispositivo não Suporta Autenticação por Impressão Digital</string>
+    <string name="finger2">Por favor Autorize o uso de Impressão Digital nas suas Definições.</string>
+    <string name="finger3">Sem Impressões Digitais Registadas\n Por Favor Registe uma nas suas Definições!</string>
+    <string name="finger4">Por favor Lige a Impressão Digital nas suas Definições de Segurança!</string>
+    <string name="finger5">Falha ao Autenticar-se</string>
+    <string name="finger6">Erro ao Autenticar-se</string>
+    <string name="erro_eliminar_conta">Ocorreu um Erro ao Eliminar a Conta!</string>
+    <string name="eliminar_conta">Eliminar Conta</string>
+    <string name="apagar_conta">Apagar Conta</string>
 </resources>

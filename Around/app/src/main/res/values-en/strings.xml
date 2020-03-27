@@ -88,4 +88,13 @@
     <string name="notification">Notification</string>
     <string name="mapa">Welcome to Our Map!</string>
     <string name="tirar_foto">Take Picture</string>
+    <string name="finger1">Your device doesn\'t support fingerprint authentication</string>
+    <string name="finger2">Please enable the fingerprint permission</string>
+    <string name="finger3">No fingerprint configured. Please register at least one fingerprint in your device\'s Settings</string>
+    <string name="finger4">Please enable lockscreen security in your device\'s Settings</string>
+    <string name="finger5">Authentication failed</string>
+    <string name="finger6">Authentication error</string>
+    <string name="erro_eliminar_conta">An Error as Occured While Deleting your Account!</string>
+    <string name="eliminar_conta">Delete Account</string>
+    <string name="apagar_conta">Delete Account</string>
 </resources>

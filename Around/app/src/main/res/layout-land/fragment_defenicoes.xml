@@ -19,9 +19,9 @@
 
     <ImageView
         android:id="@+id/pick_language_pt"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="20dp"
         android:background="@drawable/portugal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/pick_language_en"
@@ -30,14 +30,41 @@
 
     <ImageView
         android:id="@+id/pick_language_en"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="20dp"
         android:background="@drawable/english"
         app:layout_constraintStart_toEndOf="@id/pick_language_pt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_linguagem"/>
 
+
+
+    <TextView
+        android:id="@+id/text_conta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/apagar_conta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pick_language_en"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginTop="30sp"
+        />
+
+    <Button
+        android:id="@+id/button_finger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/eliminar_conta"
+        android:background="#ff0000"
+        android:textColor="#fff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/text_conta"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -139,7 +139,6 @@ public class DoLogin extends AppCompatActivity {
                             try {
                                 String res = new String(response.data,
                                         HttpHeaderParser.parseCharset(response.headers, "utf-8"));
-                                // Now you can use any deserializer to make sense of data
                                 JSONObject obj = new JSONObject(res);
                             } catch (UnsupportedEncodingException e1) {
                                 e1.printStackTrace();
