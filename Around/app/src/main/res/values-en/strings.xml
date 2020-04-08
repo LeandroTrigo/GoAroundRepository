@@ -70,7 +70,7 @@
     <string name="desc_info_ponto">To add a marker in a chosen position please hold the screen.</string>
     <string name="pagina_inicial">Home Page</string>
     <string name="creditos">Leandro Wilson da Costa Trigo\nPolytechnic Institute of Viana do Castelo\n 3rd Year of Computer Engineering</string>
-    <string name="credits">Crédits</string>
+    <string name="credits">Credits</string>
     <string name="email_client">Chose an Email Client.</string>
     <string name="telemovel">Cellphone</string>
     <string name="call">Call</string>
@@ -78,4 +78,12 @@
     <string name="ponto_updated">Marker Successfuly Updated!</string>
     <string name="ponto_deleted">Marker Successfuly Deleted!</string>
     <string name="email_existe">Email Already Registred!</string>
+    <string name="escolher_imagem">Please Chose an Image!</string>
+    <string name="eliminar">Delete</string>
+    <string name="editar">Edit</string>
+    <string name="sensor">Step Sensor not Available!</string>
+    <string name="definitions">Definitions</string>
+    <string name="language">Language Successfully Updated!</string>
+    <string name="chose_language">Choose ur Language</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
 </resources>

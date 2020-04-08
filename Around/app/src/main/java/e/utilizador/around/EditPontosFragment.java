@@ -3,7 +3,13 @@ package e.utilizador.around;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +37,10 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +51,12 @@ public class EditPontosFragment extends Fragment {
     String titulo,descricao,imagem;
     ImageView editimagem;
     int idponto;
-    Button editarponto, removerponto;
+    Button editarponto, removerponto, escolherfoto;
+
+    //Permissões
+    private static final int PERMISSSION_REQUEST = 0;
+    public static final int IMAGE_GALLERY_REQUEST = 20;
+    public static final int CAMERA_REQUEST_CODE = 228;
 
 
     @Override
@@ -62,6 +77,7 @@ public class EditPontosFragment extends Fragment {
         editimagem = view.findViewById(R.id.edit_img_ponto);
         editarponto = view.findViewById(R.id.edit_ponto);
         removerponto = view.findViewById(R.id.delete_ponto);
+        escolherfoto = view.findViewById(R.id.escolher_foto);
 
 
         titulo = getArguments().getString("titulo");
@@ -84,6 +100,13 @@ public class EditPontosFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DeletePonto();
+            }
+        });
+
+        escolherfoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onImageGalleryClicked(getView());
             }
         });
 
@@ -139,8 +162,13 @@ public class EditPontosFragment extends Fragment {
                 Map<String, String> jsonParams = new HashMap<String, String>();
                 String tituloe = edittitulo.getText().toString().trim();
                 String descricaoe = editdescricao.getText().toString();
+
+                BitmapDrawable drawable = (BitmapDrawable) editimagem.getDrawable();
+                Bitmap bitmap = drawable.getBitmap();
+
                 jsonParams.put("Titulo", tituloe);
                 jsonParams.put("Descricao", descricaoe);
+                jsonParams.put("Imagem",convertImage(bitmap));
 
 
 
@@ -211,4 +239,81 @@ public class EditPontosFragment extends Fragment {
                 .show();
     }
 
+
+    public String convertImage(Bitmap bitmap){
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        return android.util.Base64.encodeToString(byteArray, android.util.Base64.DEFAULT);
+    }
+
+    //Exibir mensagem de permissão para aceder à galeria e verificar resposta do utilizador
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults) {
+        switch (requestCode){
+            case PERMISSSION_REQUEST:
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    notificarSucesso(getResources().getString(R.string.sucesso),getString(R.string.permissions_ok));
+                }else{
+                    notificarErro(getResources().getString(R.string.erro),getString(R.string.permissions_denied));
+                }
+        }
+    }
+
+
+    //Metodo para tranferir imagens da galeria para a aplicação
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == getActivity().RESULT_OK) {
+            if (requestCode == CAMERA_REQUEST_CODE) {
+                notificarSucesso(getResources().getString(R.string.sucesso),getString(R.string.image_saved));
+            }
+
+            if (requestCode == IMAGE_GALLERY_REQUEST) {
+
+
+                // Endereço da imagem no telemóvel
+                Uri imageUri = data.getData();
+
+                // Declaramos um stream para ler a imagem do telemóvel
+                InputStream inputStream;
+
+                // Esse input é passado no url da imagem
+                try {
+                    inputStream = getActivity().getContentResolver().openInputStream(imageUri);
+
+                    // Obtemos um bitmap para a stream
+                    Bitmap image = BitmapFactory.decodeStream(inputStream);
+
+
+                    // Mostramos a imagem ao utilizador colocando no imageview disponibilizado.
+                    editimagem.setImageBitmap(image);
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                    notificarErro(getResources().getString(R.string.erro),getString(R.string.image_not_saved));
+                }
+
+            }
+        }
+    }
+
+    //Metodo para ao carregar na imagem e exibila na aplicação
+    public void onImageGalleryClicked(View v) {
+        // Abrir a Galeria
+        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+
+        // Directoria onde vamos buscar as fotos.
+        File pictureDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        String pictureDirectoryPath = pictureDirectory.getPath();
+        // Url da fotografia
+        Uri data = Uri.parse(pictureDirectoryPath);
+
+        // Vamos buscar todos os tipos de imagem
+        photoPickerIntent.setDataAndType(data, "image/*");
+
+        //Invocamos a atividade e recebemos uma fotografia
+        startActivityForResult(photoPickerIntent, IMAGE_GALLERY_REQUEST);
+    }
 }

@@ -1,6 +1,8 @@
 package e.utilizador.around;
 
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -22,6 +24,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -30,6 +34,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.google.firebase.messaging.RemoteMessage;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -46,6 +51,7 @@ public class AddMarcador extends DialogFragment {
     EditText titulo,descricao;
     Integer id;
     String latitude,longitude;
+    NotificationManagerCompat notificationManagerCompat;
 
 
 
@@ -72,6 +78,9 @@ public class AddMarcador extends DialogFragment {
         titulo = view.findViewById(R.id.titulo_ponto);
         descricao = view.findViewById(R.id.descricao_ponto);
         adicionarponto = view.findViewById(R.id.button_adicionar_ponto);
+        notificationManagerCompat = NotificationManagerCompat.from(this.getContext());
+
+        sendNotification(view);
 
 
         foto.setOnClickListener(new View.OnClickListener() {
@@ -84,10 +93,7 @@ public class AddMarcador extends DialogFragment {
         adicionarponto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                addPonto();
-
-
+            addPonto();
             }
         });
 
@@ -191,7 +197,7 @@ public class AddMarcador extends DialogFragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        notificarErro(getString(R.string.erro), getString(R.string.conexao));
+                        notificarErro(getString(R.string.erro),getString(R.string.escolher_imagem));
                     }
                 }) {
 
@@ -266,6 +272,16 @@ public class AddMarcador extends DialogFragment {
                 })
                 .setIcon(R.drawable.error)
                 .show();
+    }
+
+    public void sendNotification(View view){
+        Notification notification = new NotificationCompat.Builder(this.getContext(), App.CHANNEL_1_ID)
+                .setSmallIcon(R.drawable.icon).setContentTitle("Notificação").setContentText("Um Novo Problema Surgiu no Mapa!")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        notificationManagerCompat.notify(1,notification);
     }
 
 

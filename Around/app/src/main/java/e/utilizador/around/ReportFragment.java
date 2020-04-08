@@ -4,16 +4,25 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorEventListener2;
+import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,7 +52,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class ReportFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnInfoWindowClickListener{
+public class ReportFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnInfoWindowClickListener, SensorEventListener{
 
     private GoogleMap mMap;
     private Button tipomapa,marcarponto,info;
@@ -57,6 +66,15 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
     private static final int DEFAULT_ZOOM = 15;
     private Map<Marker, String> allMarkersMap = new HashMap<Marker, String>();
 
+
+    private SensorManager sensorManager;
+    private TextView stepscounter;
+    private boolean running;
+    private int steps;
+    private int oldsteps;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_report, null, false);
@@ -66,12 +84,10 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
                 .findFragmentById(R.id.mapa);
         mapFragment.getMapAsync(this);
-
+        getPontos();
     }
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this.getContext());
-
-        getPontos();
 
         return view;
 
@@ -91,6 +107,15 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         tipomapa = view.findViewById(R.id.button_tipo_mapa);
         marcarponto = view.findViewById(R.id.button_waypoint);
         info = view.findViewById(R.id.button_info);
+        stepscounter = view.findViewById(R.id.step_counter);
+        sensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
+        stepscounter.setText("0");
+
+        sharedPreferences = getContext().getSharedPreferences("loginref", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        oldsteps = sharedPreferences.getInt("steps",0);
+
+
 
         tipomapa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +150,6 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         });
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
-
 
     }
 
@@ -390,5 +414,43 @@ public class ReportFragment extends Fragment implements OnMapReadyCallback, Goog
         args.putString("imagem", allMarkersMap.get(marker));
         dialog.setArguments(args);
         dialog.show(getFragmentManager(),"DialogImagem");
+    }
+
+
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+
+    if(running){
+        steps = Math.round(event.values[0]) - oldsteps;
+        stepscounter.setText(String.valueOf(steps));
+        editor.putInt("steps",Math.round(event.values[0]));
+        editor.commit();
+    }
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        running = true;
+        Sensor count = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        if(count != null){
+            sensorManager.registerListener(this,count,SensorManager.SENSOR_DELAY_UI);
+        }else{
+            Log.d("ERRO", getString(R.string.sensor));
+        }
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        running = false;
     }
 }
