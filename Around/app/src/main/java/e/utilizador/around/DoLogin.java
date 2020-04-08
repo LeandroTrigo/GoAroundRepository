@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,8 +31,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
 import e.utilizador.around.R;
 
@@ -75,6 +84,7 @@ public class DoLogin extends AppCompatActivity {
     }
 
     public void login(final View view) {
+
         String url = MySingleton.server + "utilizador/login";
 
         StringRequest postResquest = new StringRequest(Request.Method.POST, url,
@@ -155,10 +165,25 @@ public class DoLogin extends AppCompatActivity {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> jsonParams = new HashMap<String, String>();
-                String emaillogado = email.getText().toString().trim();
-                String passlogada = pass.getText().toString();
-                jsonParams.put("Email", emaillogado);
-                jsonParams.put("Password", passlogada);
+
+
+                    try {
+                       String emaillogado =  ChCrypto.encrypt(email.getText().toString().trim(), "MY SECRET KEY IS I AM A SECRET K");
+                        String passlogada = ChCrypto.encrypt(pass.getText().toString().trim(),"MY SECRET KEY IS I AM A SECRET K");
+
+
+
+                        jsonParams.put("Email", emaillogado);
+                        jsonParams.put("Password", passlogada);
+
+
+
+                    }
+                    catch(Exception e){
+                        Log.d("ERRO", "login: " + e);
+                    }
+
+
 
 
 
@@ -173,6 +198,7 @@ public class DoLogin extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
+
 
 
 

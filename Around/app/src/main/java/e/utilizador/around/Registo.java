@@ -95,12 +95,20 @@ public class Registo extends AppCompatActivity {
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parametros = new HashMap<>();
 
-                parametros.put("Email", email.getText().toString().trim());
-                parametros.put("Nome", nome.getText().toString().trim());
+                try {
+                    String emailr = ChCrypto.encrypt(email.getText().toString().trim(), "MY SECRET KEY IS I AM A SECRET K");
+                    String nomer = ChCrypto.encrypt(nome.getText().toString().trim(), "MY SECRET KEY IS I AM A SECRET K");
+                    String passwordr = ChCrypto.encrypt(pass.getText().toString().trim(), "MY SECRET KEY IS I AM A SECRET K");
 
-                String password = pass.getText().toString().trim();
 
-                parametros.put("Password", password);
+                    parametros.put("Email", emailr);
+                    parametros.put("Nome", nomer);
+                    parametros.put("Password", passwordr);
+
+
+                } catch(Exception e){
+                    Log.d("ERRO", "login: " + e);
+                }
 
                 return parametros;
             }

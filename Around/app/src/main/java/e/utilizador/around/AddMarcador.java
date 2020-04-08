@@ -215,21 +215,31 @@ public class AddMarcador extends DialogFragment {
                 Map<String, String> parametros = new HashMap<>();
 
 
-
-
                 BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
                 Bitmap bitmap = drawable.getBitmap();
 
 
+                try {
+                    String titulop = ChCrypto.encrypt(titulo.getText().toString().trim(), "MY SECRET KEY IS I AM A SECRET K");
+                    String descp = ChCrypto.encrypt(descricao.getText().toString().trim(), "MY SECRET KEY IS I AM A SECRET K");
+                    String userp = ChCrypto.encrypt(id.toString().trim(), "MY SECRET KEY IS I AM A SECRET K");
+                    String latp = ChCrypto.encrypt(latitude, "MY SECRET KEY IS I AM A SECRET K");
+                    String longp = ChCrypto.encrypt(longitude, "MY SECRET KEY IS I AM A SECRET K");
+                    String imgp = ChCrypto.encrypt(convertImage(bitmap), "MY SECRET KEY IS I AM A SECRET K");
 
 
+                    parametros.put("Titulo", titulop);
+                parametros.put("Descricao", descp);
+                parametros.put("IdUtilizador",userp);
+                parametros.put("Latitude",latp);
+                parametros.put("Longitude",longp);
+                parametros.put("Imagem",imgp);
 
-                parametros.put("Titulo", titulo.getText().toString().trim());
-                parametros.put("Descricao", descricao.getText().toString().trim());
-                parametros.put("IdUtilizador",id.toString().trim());
-                parametros.put("Latitude",latitude);
-                parametros.put("Longitude",longitude);
-                parametros.put("Imagem",convertImage(bitmap));
+                }
+                catch(Exception e){
+                    Log.d("ERRO", "login: " + e);
+                }
+
 
                 return parametros;
             }

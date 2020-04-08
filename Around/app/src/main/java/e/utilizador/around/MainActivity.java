@@ -48,7 +48,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    Boolean anonimo;
+    Boolean anonimo = false;
     ImageView edit,fotoperfil;
     TextView nomeperfil;
     String nomeuser;
